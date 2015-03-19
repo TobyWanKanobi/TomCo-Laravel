@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: TomCo
+        psr4_prefix: TomCo
+        src_path: app
