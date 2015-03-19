@@ -1,6 +1,9 @@
 <?php namespace TomCo\Http\Controllers;
 
-class Sitecontroller extends Controller {
+use Illuminate\Database\Eloquent\Model;
+use TomCo\models\Product;
+
+class ShopController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -30,7 +33,9 @@ class Sitecontroller extends Controller {
 	 */
 	public function index()
 	{
-		return view('main');
+		$products = Product::all();
+		
+		return view('pages.browse-products', ['products' => $products]);
 	}
 
 }

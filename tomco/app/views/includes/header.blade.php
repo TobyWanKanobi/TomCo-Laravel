@@ -1,9 +1,6 @@
-@extends('main')
-
-@section('header')
 <div id="header">
 	<div id="logo">
-		<img src="assets/img/logo.png" alt="logo" style="width:auto;height:200px">
+		<img src="{{ URL::asset('assets/images/logo.png') }}" alt="logo" style="width:auto;height:200px">
 	</div>
 	
 	<!-- Navigation -->
@@ -24,10 +21,10 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="index.php">Home <span class="sr-only">(current)</span></a></li>
-					<li><a href="index.php?page=browse_products">Producten</a></li>
-					<li><a href="#">Over Ons</a></li>
-					<li><a href="#">Contact</a></li>
+					<li class="active"><a href="{{ URL::to("/") }}">Home <span class="sr-only">(current)</span></a></li>
+					<li><a href="{{ URL::to("products/browse") }}">Producten</a></li>
+					<li><a href="{{ URL::to("products/browse") }}">Over Ons</a></li>
+					<li><a href="{{ URL::to("products/browse") }}">Contact</a></li>
 				</ul>
 				
 				<div class="col-sm-3 col-md-3 pull-right">
@@ -65,4 +62,3 @@
 	</div>
 	<!--Einde unique sellingpoints-->
 </div>
-@endsection

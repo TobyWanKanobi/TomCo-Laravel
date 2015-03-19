@@ -12,10 +12,14 @@
 */
 
 //Route::get('/', 'WelcomeController@index');
-Route::get('test', 'WelcomeController@index');
-Route::get('/', 'SiteController@index');
-
 Route::get('home', 'HomeController@index');
+
+Route::get('/', function()
+{
+    return View::make('pages.home');
+});
+
+Route::get('products/browse', 'ShopController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
