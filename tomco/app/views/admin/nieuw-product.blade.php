@@ -13,7 +13,7 @@
 	
 	<div class="row">
 		<div class="col-md-6"> 
-		{!! Form::open(array('route' => 'nieuw_product', 'class' => 'form-horizontal')) !!}
+		{!! Form::model($product, array('route' => 'nieuw_product', 'class' => 'form-horizontal')) !!}
 		
 		<div class="form-group">
 			{!! Form::label('Naam') !!}

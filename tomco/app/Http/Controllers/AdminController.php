@@ -1,6 +1,7 @@
 <?php namespace TomCo\Http\Controllers;
 
 use TomCo\Http\Requests\ProductFormRequest;
+use TomCo\models\Product;
 
 class AdminController extends Controller {
 
@@ -52,11 +53,12 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function nieuwProduct(ProductFormRequest $request)
+	public function nieuwProduct()
 	{
 	
-		echo 'sdasdas';
-		return view('admin.nieuw-product');
+		$product = new Product();
+		
+		return view('admin.nieuw-product', ['product' => $product]);
 	}
 
 }
