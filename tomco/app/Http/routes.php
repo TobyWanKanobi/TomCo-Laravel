@@ -27,6 +27,8 @@ Route::get('login', ['as' => 'login', 'uses' => 'Auth\AuthController@login']);
 Route::post('login', ['as' => 'login_poging', 'uses' => 'Auth\AuthController@poging']);
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@logout']);
 Route::get('products/browse', ['as' => 'browse-products', 'uses' => 'ShopController@product']);
+Route::get('aboutus', ['as' => 'about_us', 'uses' => 'ShopController@aboutus']);
+Route::get('contact', ['as' => 'contact', 'uses' => 'ShopController@contact']);
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +38,9 @@ Route::get('products/browse', ['as' => 'browse-products', 'uses' => 'ShopControl
 |
 */
 Route::get('admin', ['as' => 'dashboard', 'uses' => 'AdminController@index']);
+Route::get('admin/product/overzicht', ['as' => 'overzicht_product', 'uses' => 'ProductController@overzicht']);
+Route::delete('admin/product/overzicht/{id}', ['as' => 'verwijderen', 'uses' => 'ProductController@verwijderen']);
+Route::post('admin/product/overzicht/{id}', ['as' => 'change_product', 'uses' => 'ProductController@wijzigen']);
 Route::get('admin/product/nieuw', ['as' => 'nieuw_product', 'uses' => 'ProductController@nieuw']);
 Route::post('admin/product/nieuw', ['as' => 'save_product', 'uses' => 'ProductController@opslaan']);
 
@@ -43,3 +48,4 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+

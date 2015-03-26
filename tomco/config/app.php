@@ -145,6 +145,7 @@ return [
 		'TomCo\Providers\ConfigServiceProvider',
 		'TomCo\Providers\EventServiceProvider',
 		'TomCo\Providers\RouteServiceProvider',
+		'TomCo\Providers\CustomAuthProvider',
 
 	],
 

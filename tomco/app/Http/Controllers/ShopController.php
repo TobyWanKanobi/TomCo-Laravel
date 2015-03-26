@@ -32,6 +32,30 @@ class ShopController extends Controller {
 	 *
 	 * @return Response
 	 */
+	public function aboutus()
+	{
+		//$products = Product::all();
+		
+		return view('pages.aboutus');
+	}
+	
+	/**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function contact()
+	{
+		//$products = Product::all();
+		
+		return view('pages.contact');
+	}
+	
+	/**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
 	public function product()
 	{
 		$products = Product::all();
