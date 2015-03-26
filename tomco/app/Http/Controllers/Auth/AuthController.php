@@ -5,6 +5,8 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Support\Facades\Input;
+use TomCo\Http\Requests\LoginFormRequest;
+
 use Auth;
 use Hash;
 
@@ -35,7 +37,7 @@ class AuthController extends Controller {
 		$this->auth = $auth;
 		$this->registrar = $registrar;
 
-		$this->middleware('guest', ['except' => 'logout']);
+		$this->middleware('guest', ['except' => ['logout', 'register']]);
 	}
 	
 	public function login() {
@@ -44,11 +46,10 @@ class AuthController extends Controller {
 		return view('auth.login');
 	}
 	
-	public function poging() {
+	public function poging(LoginFormRequest $request) {
 		
-		$name = Input::get('email');
-		$pass = Input::get('wachtwoord');
-		$login = Hash::make('admin');
+		$name = $request->input('email');
+		$pass = $request->input('wachtwoord');
 		
 		if (Auth::attempt(['email' => $name, 'password' => $pass])) {
 		
@@ -58,14 +59,20 @@ class AuthController extends Controller {
 			//$login = "fail" . $name . $pass;
 		}
 		
-		return view('auth.login', ['test' => $login]);
+		return view('auth.login');
 	}
 	
 	public function logout() {
 		
 		Auth::logout();
 		
-		return view('pages.home', ['test' => "login"]);
+		return view('home.home');
+	}
+	
+	public function register() {
+		
+		
+		return view('auth.register');
 	}
 
 }

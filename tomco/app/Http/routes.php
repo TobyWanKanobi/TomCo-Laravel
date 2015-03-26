@@ -11,24 +11,29 @@
 |
 */
 
-//Route::get('/', 'WelcomeController@index');
-
 Route::get('home', function() {
-    return View::make('pages.home');
+    return View::make('home.home');
 });
 
 Route::get('/', function() {
-    return View::make('pages.home');
+    return View::make('home.home');
+});
+
+Route::get('over-ons', function() {
+    return View::make('home.over-ons');
+});
+
+Route::get('contact', function() {
+    return View::make('home.contact');
 });
 
 
-
+Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@register']);
 Route::get('login', ['as' => 'login', 'uses' => 'Auth\AuthController@login']);
 Route::post('login', ['as' => 'login_poging', 'uses' => 'Auth\AuthController@poging']);
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@logout']);
+
 Route::get('products/browse', ['as' => 'browse-products', 'uses' => 'ShopController@product']);
-Route::get('aboutus', ['as' => 'about_us', 'uses' => 'ShopController@aboutus']);
-Route::get('contact', ['as' => 'contact', 'uses' => 'ShopController@contact']);
 
 /*
 |--------------------------------------------------------------------------

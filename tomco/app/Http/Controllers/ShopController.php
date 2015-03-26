@@ -7,7 +7,7 @@ class ShopController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
-	| Welcome Controller
+	| Shop Controller
 	|--------------------------------------------------------------------------
 	|
 	| This controller renders the "marketing page" for the application and
@@ -15,7 +15,7 @@ class ShopController extends Controller {
 	| controllers, you are free to modify or remove it as you desire.
 	|
 	*/
-
+	
 	/**
 	 * Create a new controller instance.
 	 *
@@ -26,29 +26,12 @@ class ShopController extends Controller {
 		//$this->middleware('guest');
 		//$this->middleware('auth');
 	}
-
-	/**
-	 * Show the application welcome screen to the user.
-	 *
-	 * @return Response
-	 */
-	public function aboutus()
-	{
-		//$products = Product::all();
-		
-		return view('pages.aboutus');
-	}
 	
-	/**
-	 * Show the application welcome screen to the user.
-	 *
-	 * @return Response
-	 */
-	public function contact()
+	public function index()
 	{
-		//$products = Product::all();
+		$products = Product::all();
 		
-		return view('pages.contact');
+		return view('pages.browse-products', ['products' => $products]);
 	}
 	
 	/**

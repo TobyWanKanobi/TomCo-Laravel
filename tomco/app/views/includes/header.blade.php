@@ -15,7 +15,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.php">Tomco</a>
+				<a class="navbar-brand" href="{{ URL::to("/") }}">Tomco</a>
 			</div>
 			
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -23,7 +23,7 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="{{ URL::to("/") }}">Home <span class="sr-only">(current)</span></a></li>
 					<li><a href="{{ URL::to("products/browse") }}">Producten</a></li>
-					<li><a href="{{ URL::to("aboutus") }}">Over Ons</a></li>
+					<li><a href="{{ URL::to("over-ons") }}">Over Ons</a></li>
 					<li><a href="{{ URL::to("contact") }}">Contact</a></li>
 					<li>
 						@if (Auth::guest())
