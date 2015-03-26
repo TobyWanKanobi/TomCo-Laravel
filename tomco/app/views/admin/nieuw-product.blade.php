@@ -6,44 +6,16 @@
 	</div>
 	
 	<div class="row">
-		<div class="col-md-12">
-			<div class="alert alert-info">Laatste nieuws en overzicht</div>
-		</div>
-	</div>
-	
-	<div class="row">
 		<div class="col-md-6"> 
-		{!! Form::model($product, array('route' => 'nieuw_product', 'class' => 'form-horizontal')) !!}
 		
-		<div class="form-group">
-			{!! Form::label('Naam') !!}
-			{!! Form::text('naam', null, ['class' => 'form-control']) !!}
-		</div>
+		<ul>
+    @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+    @endforeach
+</ul>
+		{!! Form::open(['route' => 'save_product', 'class' => 'form-horizontal']) !!}
 		
-		<div class="form-group">
-			{!! Form::label('Beschrijving') !!}
-			{!! Form::textarea('beschrijving', null, ['class' => 'form-control']) !!}
-		</div>
-		
-		<div class="form-group">
-			{!! Form::label('Prijs') !!}
-			{!! Form::text('prijs', null, ['class' => 'form-control']) !!}
-		</div>
-		
-		<div class="form-group">
-			{!! Form::label('Afbeelding') !!}
-			{!! Form::file('afbeelding', null, ['class' => 'form-control']) !!}
-			<p class="help-block">
-			Lorem ipsum
-			</p>
-		</div>
-		
-		<div class="form-group">
-			{!! Form::label('Categorie') !!}
-			{!! Form::text('categorie', null, ['class' => 'form-control']) !!}
-		</div>
-		
-		{!! Form::submit('Opslaan', ['class' => 'btn btn-default']) !!}
+		@include('admin/partials/_product-form', ['product' => $product, 'submit_tekst' => 'Product toevoegen'])
 		
 		{!! Form::close() !!}
 		</div>

@@ -17,7 +17,7 @@
 				<img data-src="holder.js/200x200" class="img-responsive" alt="title" />
 				<p>&euro; {{ $product->prijs }}</p>
 				<a href="" class="btn btn-success">Bestellen</a>
-				<a href="{{ URL::to("test") }}" class="btn btn-primary">Meer info</a>
+				<a href="{{ URL::action('ShopController@product', 123) }}" class="btn btn-primary">Meer info</a>
 			</div>
 		
 		@endforeach

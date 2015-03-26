@@ -5,7 +5,7 @@ use TomCo\models\Product;
 use Input;
 use Redirect;
 
-class AdminController extends Controller {
+class ProductController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -43,11 +43,12 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function productOverzicht()
+	public function nieuw()
 	{
-	
 		
-		return view('admin.product-overzicht');
+		$product = new Product();
+		
+		return view('admin.nieuw-product', ['product' => $product]);
 	}
 	
 	/**
@@ -55,13 +56,12 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function nieuwProduct()
+	public function opslaan(ProductFormRequest $request)
 	{
-	
-		$input = Input::all();
-		Product::create( $input );
-		return Redirect::route('admin.nieuw-product')->with('message', 'Project created');
-		//return view('admin.nieuw-product', ['product' => $product]);
+		$product = Product::create($request->all());
+		$this->validate($request, ['naam' => 'required']);
+		
+		return view('admin.nieuw-product', ['product' => $product]);
 	}
 
 }

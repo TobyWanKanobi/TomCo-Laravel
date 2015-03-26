@@ -23,7 +23,7 @@ class ProductFormRequest extends Request {
 	{
 		return [
 			'naam' => 'required',
-			'beschrijving' => 'required',
+			'omschrijving' => 'required',
 			'prijs' => 'required',
 			//'afbeelding' => 'required',
 			//'categorie' => 'required',

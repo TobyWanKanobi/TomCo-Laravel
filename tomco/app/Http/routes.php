@@ -20,7 +20,7 @@ Route::get('/', function() {
 
 
 
-Route::get('products/browse', 'ShopController@index');
+Route::get('products/browse', ['as' => 'browse-products', 'uses' => 'ShopController@product']);
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +30,8 @@ Route::get('products/browse', 'ShopController@index');
 |
 */
 Route::get('admin', ['as' => 'dashboard', 'uses' => 'AdminController@index']);
-Route::match(['get', 'post'], 'admin/product/nieuw', ['as' => 'nieuw_product', 'uses' => 'AdminController@nieuwProduct']);
+Route::get('admin/product/nieuw', ['as' => 'nieuw_product', 'uses' => 'ProductController@nieuw']);
+Route::post('admin/product/nieuw', ['as' => 'save_product', 'uses' => 'ProductController@opslaan']);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

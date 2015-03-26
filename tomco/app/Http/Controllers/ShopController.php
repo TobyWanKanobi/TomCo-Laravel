@@ -31,11 +31,23 @@ class ShopController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function product()
 	{
 		$products = Product::all();
 		
 		return view('pages.browse-products', ['products' => $products]);
 	}
+	
+	/**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	/*public function product()
+	{
+		$products = Product::all();
+		
+		return view('pages.product-detail', ['products' => $products]);
+	}*/
 
 }
