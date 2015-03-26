@@ -32,7 +32,7 @@
 										<h4 class="modal-title" id="myModalLabel">Wijzigen</h4>
 									</div>
 									<div class="modal-body">
-										{!! Form::open(['route' => 'save_product', 'class' => 'form-horizontal']) !!}
+										{!! Form::open(['route' => 'change_product', 'class' => 'form-horizontal']) !!}
 		
 										@include('admin/partials/_product-form', ['product' => $product, 'submit_tekst' => 'Wijzigen'])
 										
