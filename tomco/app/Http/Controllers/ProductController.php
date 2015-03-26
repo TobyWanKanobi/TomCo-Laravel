@@ -4,6 +4,7 @@ use TomCo\Http\Requests\ProductFormRequest;
 use TomCo\models\Product;
 use Input;
 use Redirect;
+use Illuminate\View\View;
 
 class ProductController extends Controller {
 
@@ -36,6 +37,47 @@ class ProductController extends Controller {
 	public function index()
 	{
 		return view('admin.dashboard');
+	}
+	
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function overzicht()
+	{
+		
+		$products = Product::all();
+		
+		return view('admin.overzicht-product', ['products' => $products]);
+	}
+	
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function verwijderen($id)
+	{
+		$deleted=Product::find($id);
+		$deleted->delete();
+		$products=Product::all();
+
+		return view('admin.overzicht-product', ['products' => $products]);
+	}
+	
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function wijzigen(ProductFormRequest $request)
+	{
+		$product = Product::update($request->all());
+		$this->validate($request, ['naam' => 'required']);
+		$products=Product::all();
+		
+		return view('admin.overzicht-product', ['product' => $product]);
 	}
 	
 	/**

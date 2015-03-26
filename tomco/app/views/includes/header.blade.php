@@ -23,8 +23,8 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="{{ URL::to("/") }}">Home <span class="sr-only">(current)</span></a></li>
 					<li><a href="{{ URL::to("products/browse") }}">Producten</a></li>
-					<li><a href="{{ URL::to("products/browse") }}">Over Ons</a></li>
-					<li><a href="{{ URL::to("products/browse") }}">Contact</a></li>
+					<li><a href="{{ URL::to("aboutus") }}">Over Ons</a></li>
+					<li><a href="{{ URL::to("contact") }}">Contact</a></li>
 				</ul>
 				
 				<div class="col-sm-3 col-md-3 pull-right">

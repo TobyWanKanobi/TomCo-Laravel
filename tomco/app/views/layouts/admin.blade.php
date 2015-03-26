@@ -169,7 +169,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#producten"><i class="fa fa-fw fa-cart-plus "></i> Producten <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="producten" class="collapse">
                             <li>
-                                <a href="#">Overzicht</a>
+                                <a href="{{ URL::to('admin/product/overzicht') }}">Overzicht</a>
                             </li>
 							<li>
                                 <a href="{{ URL::to('admin/product/nieuw') }}">Nieuw product</a>
