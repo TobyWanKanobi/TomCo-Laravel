@@ -12,7 +12,10 @@
 */
 
 //Route::get('/', 'WelcomeController@index');
-Route::get('home', 'HomeController@index');
+
+Route::get('home', function() {
+    return View::make('pages.home');
+});
 
 Route::get('/', function() {
     return View::make('pages.home');
@@ -20,6 +23,9 @@ Route::get('/', function() {
 
 
 
+Route::get('login', ['as' => 'login', 'uses' => 'Auth\AuthController@login']);
+Route::post('login', ['as' => 'login_poging', 'uses' => 'Auth\AuthController@poging']);
+Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@logout']);
 Route::get('products/browse', ['as' => 'browse-products', 'uses' => 'ShopController@product']);
 
 /*

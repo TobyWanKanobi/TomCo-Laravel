@@ -28,7 +28,7 @@ return [
 	|
 	*/
 
-	'model' => 'TomCo\User',
+	'model' => 'TomCo\models\Account',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return [
 	|
 	*/
 
-	'table' => 'users',
+	'table' => 'account',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -58,7 +58,7 @@ return [
 	|
 	*/
 
-	'password' => [
+	'wachtwoord' => [
 		'email' => 'emails.password',
 		'table' => 'password_resets',
 		'expire' => 60,

@@ -4,6 +4,9 @@ use TomCo\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Input;
+use Auth;
+use Hash;
 
 class AuthController extends Controller {
 
@@ -32,7 +35,37 @@ class AuthController extends Controller {
 		$this->auth = $auth;
 		$this->registrar = $registrar;
 
-		$this->middleware('guest', ['except' => 'getLogout']);
+		$this->middleware('guest', ['except' => 'logout']);
+	}
+	
+	public function login() {
+		
+		
+		return view('auth.login');
+	}
+	
+	public function poging() {
+		
+		$name = Input::get('email');
+		$pass = Input::get('wachtwoord');
+		$login = Hash::make('admin');
+		
+		if (Auth::attempt(['email' => $name, 'password' => $pass])) {
+		
+			// The user is active, not suspended, and exists.
+			
+		} else {
+			//$login = "fail" . $name . $pass;
+		}
+		
+		return view('auth.login', ['test' => $login]);
+	}
+	
+	public function logout() {
+		
+		Auth::logout();
+		
+		return view('pages.home', ['test' => "login"]);
 	}
 
 }

@@ -25,6 +25,13 @@
 					<li><a href="{{ URL::to("products/browse") }}">Producten</a></li>
 					<li><a href="{{ URL::to("products/browse") }}">Over Ons</a></li>
 					<li><a href="{{ URL::to("products/browse") }}">Contact</a></li>
+					<li>
+						@if (Auth::guest())
+							<a href="{{ URL::to("login") }}">Inloggen</a>
+						@else
+							<a href="{{ URL::to("logout") }}">Logout</a>
+						@endif
+					</li>
 				</ul>
 				
 				<div class="col-sm-3 col-md-3 pull-right">
