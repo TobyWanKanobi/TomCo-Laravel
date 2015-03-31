@@ -166,7 +166,7 @@
                         <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
 					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#producten"><i class="fa fa-fw fa-cart-plus "></i> Producten <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#producten"><i class="fa fa-fw fa-cart-plus"></i> Producten <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="producten" class="collapse">
                             <li>
                                 <a href="{{ URL::to('admin/product/overzicht') }}">Overzicht</a>
@@ -176,7 +176,9 @@
                             </li>
                         </ul>
                     </li>
-					
+					<li>
+						<a href="#"><i class="fa fa-fw fa-sitemap"></i> Bestellingen</a>
+					</li>
 					<li>
 						<a href="#"><i class="fa fa-fw fa-sitemap"></i> Categorieen</a>
 					</li>
