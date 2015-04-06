@@ -71,9 +71,10 @@ class ProductController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function wijzigen(ProductFormRequest $request)
+	public function wijzigen($id)
 	{
-		$product = Product::update($request->all());
+		$update=Product::find($id);
+		$update = Product::update($request->all());
 		$this->validate($request, ['naam' => 'required']);
 		$products=Product::all();
 		
