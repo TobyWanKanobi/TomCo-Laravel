@@ -13,7 +13,7 @@
         <li>{{ $error }}</li>
     @endforeach
 </ul>
-		{!! Form::open(['route' => 'save_product', 'class' => 'form-horizontal']) !!}
+		{!! Form::model($product, ['route' => 'save_product', 'class' => 'form-horizontal']) !!}
 		
 		@include('admin/partials/_product-form', ['product' => $product, 'submit_tekst' => 'Product toevoegen'])
 		

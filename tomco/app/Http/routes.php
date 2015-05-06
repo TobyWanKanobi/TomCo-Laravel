@@ -46,7 +46,7 @@ Route::get('admin', ['as' => 'dashboard', 'uses' => 'AdminController@index']);
 Route::get('admin/categorie/beheer', ['as' => 'categorie_beheer', 'uses' => 'CategorieController@overzicht']);
 Route::get('admin/product/overzicht', ['as' => 'overzicht_product', 'uses' => 'ProductController@overzicht']);
 Route::delete('admin/product/overzicht/{id}', ['as' => 'verwijderen', 'uses' => 'ProductController@verwijderen']);
-Route::post('admin/product/overzicht/{id}', ['as' => 'change_product', 'uses' => 'ProductController@wijzigen']);
+Route::post('admin/product/wijzigen', ['as' => 'change_product', 'uses' => 'ProductController@wijzigen']);
 Route::get('admin/product/nieuw', ['as' => 'nieuw_product', 'uses' => 'ProductController@nieuw']);
 Route::post('admin/product/nieuw', ['as' => 'save_product', 'uses' => 'ProductController@opslaan']);
 

@@ -71,12 +71,13 @@ class ProductController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function wijzigen($id)
+	public function wijzigen(ProductFormRequest $request)
 	{
-		$update=Product::find($id);
-		$update = Product::update($request->all());
-		$this->validate($request, ['naam' => 'required']);
-		$products=Product::all();
+		$product = Product::create($request->all());
+		//$update=Product::find($id);
+		//$update = Product::update($request->all());
+		//$this->validate($request, ['naam' => 'required']);
+		//$products=Product::all();
 		
 		return view('admin.overzicht-product', ['product' => $product]);
 	}
@@ -102,7 +103,6 @@ class ProductController extends Controller {
 	public function opslaan(ProductFormRequest $request)
 	{
 		$product = Product::create($request->all());
-		$this->validate($request, ['naam' => 'required']);
 		
 		return view('admin.nieuw-product', ['product' => $product]);
 	}

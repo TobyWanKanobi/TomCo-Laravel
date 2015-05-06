@@ -32,15 +32,14 @@
 										<h4 class="modal-title" id="myModalLabel">Wijzigen</h4>
 									</div>
 									<div class="modal-body">
-										{!! Form::open(['route' => 'change_product', 'class' => 'form-horizontal']) !!}
+										{!! Form::model($product, ['route' => ['change_product']]) !!}
 		
-										@include('admin/partials/_product-form', ['product' => $product, 'submit_tekst' => 'Wijzigen'])
+										@include('admin/partials/_product-form', ['submit_tekst' => 'Wijzigen'])
 										
 										{!! Form::close() !!}
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal">Annuleer</button>
-										<!--<button type="submit" href="{{ URL::route('verwijderen', $product->product_id) }}" class="btn btn-primary">Wijzigen</button>-->
 									</div>
 									</div>
 								</div>
@@ -56,7 +55,7 @@
 										Weet je zeker dat je {{ $product->naam }} wilt verwijderen?
 									</div>
 									<div class="modal-footer">
-										{!! Form::open(array('route' => array('verwijderen', $product->product_id), 'method' => 'delete')) !!}
+										{!! Form::open(['route' => ['verwijderen', $product->product_id], 'method' => 'delete']) !!}
 										<button type="button" class="btn btn-default" data-dismiss="modal">Annuleer</button>
 										<button type="submit" href="{{ URL::route('verwijderen', $product->product_id) }}" class="btn btn-primary">Delete</button>
 										{!! Form::close() !!}
@@ -67,18 +66,6 @@
 						</tr>
 					@endforeach
 				</table>
-			
-			@foreach($products as $product)
-			
-				<!--<div class="col-sm-6 col-md-4 well text-center">
-					<h2 class="h2">{{ $product->naam }}</h2>
-					<img data-src="holder.js/200x200" class="img-responsive" alt="title" />
-					<p>&euro; {{ $product->prijs }}</p>
-					<a href="" class="btn btn-success">Bestellen</a>
-					<a href="{{ URL::action('ShopController@product', 123) }}" class="btn btn-primary">Meer info</a>
-				</div>-->
-			
-			@endforeach
 
 			</div>
 		</div>

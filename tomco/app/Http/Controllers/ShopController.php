@@ -42,8 +42,9 @@ class ShopController extends Controller {
 	public function product()
 	{
 		$products = Product::all();
+		$categories = Categorie::all();
 		
-		return view('pages.browse-products', ['products' => $products]);
+		return view('pages.browse-products', ['categorien' => $cats, 'products' => $products]);
 	}
 	
 	/**

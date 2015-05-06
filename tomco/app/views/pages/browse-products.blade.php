@@ -2,6 +2,9 @@
 @section('content')
 
 <div class="col-lg-3" style="background-color: #00FF00;">
+	<ul>
+		<li></li>
+	</ul>
  Categorieen
 </div>
 <div class="col-lg-9" style="background-color: #00FFFF;">
