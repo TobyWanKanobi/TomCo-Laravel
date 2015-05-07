@@ -48,3 +48,9 @@
     flex:1 1 auto;
 }
 
+/* Categories */
+div#categories ol {
+	list-style-type: none;
+	}
+
+

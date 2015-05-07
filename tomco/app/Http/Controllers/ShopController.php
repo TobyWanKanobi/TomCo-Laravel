@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use TomCo\models\Product;
+use TomCo\models\Categorie;
 
 class ShopController extends Controller {
 
@@ -41,10 +42,11 @@ class ShopController extends Controller {
 	 */
 	public function product()
 	{
-		$products = Product::all();
-		$categories = Categorie::all();
+	//	$products = Product::all();
+	//	$categories = Categorie::wherenull('parent_id')->with('subCategorien')->get();
 		
-		return view('pages.browse-products', ['categorien' => $cats, 'products' => $products]);
+		//return view('pages.browse-products', ['categorien' => $categories, 'products' => $categories->products()->get()]);
+		return "Hello World";
 	}
 	
 	/**

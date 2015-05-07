@@ -1,18 +1,49 @@
 @extends('layouts.default')
 @section('content')
 
-<div class="col-lg-3" style="background-color: #00FF00;">
-	<ul>
-		<li></li>
-	</ul>
- Categorieen
+<?php
+function generateCategories($categorien) {
+	
+	$html = '';
+	
+	$html .= '<ol>';
+	
+	foreach($categorien as $cat) {
+		
+		$html .= '<li>';
+		$html .= '<a href="' . URL::to('categorie/'.$cat->naam) . '">' . $cat->naam . '</a>';
+		
+		if(!empty($cat->subCategorien())) {
+			
+			$html .= generateCategories($cat->subCategorien()->get());
+		}
+		
+		$html .= '</li>';
+	}
+	
+	$html .= '</ol>';
+	
+	return $html;
+}
+
+?>
+
+<div class="col-lg-3">
+	<div id="categories">
+	<?php
+		echo generateCategories($categorieen);
+	?>
+	</div>
 </div>
-<div class="col-lg-9" style="background-color: #00FFFF;">
+<div class="col-lg-9">
 
 	<div id="products">
 
+		@if (count($producten) === 0)
+			<div class="alert alert-warning" role="alert">Er zijn geen producten in deze categorie.</div>
+		@endif
 		
-		@foreach($products as $product)
+		@foreach($producten as $product)
 		
 			<div class="col-sm-6 col-md-4 well text-center">
 				<h2 class="h4">{{ $product->naam }}</h2>
@@ -20,7 +51,7 @@
 				
 				<p>&euro; {{ $product->prijs }}</p>
 				<a href="" class="btn btn-success">Bestellen</a>
-				<a href="{{ URL::action('ShopController@product', 123) }}" class="btn btn-primary">Meer info</a>
+				<a href="#" class="btn btn-primary">Meer info</a>
 			</div>
 		
 		@endforeach

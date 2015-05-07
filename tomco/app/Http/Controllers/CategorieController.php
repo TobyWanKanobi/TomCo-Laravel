@@ -1,6 +1,6 @@
 <?php namespace TomCo\Http\Controllers;
 
-
+use TomCo\models\Product;
 use TomCo\models\CategorieTest;
 use TomCo\models\Categorie;
 use Input;
@@ -34,22 +34,23 @@ class CategorieController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($naam = NULL)
 	{
-		return view('admin.dashboard');
+		$categorieen = Categorie::wherenull('parent_id')->with('subCategorien')->get();
+		
+		if(isset($naam)) {
+			$categorie = Categorie::where('naam', $naam)->first(); // Vul één Categorie model op basis van categorienaam
+			$producten = $categorie->products()->get();
+		} else {
+			$producten = Product::all();
+		}
+		
+		return view('pages.browse-products', ['categorieen' => $categorieen, 'producten' => $producten]);
 	}
 	
 	public function overzicht()
 	{
 	
-		//$cats = Categorie::all();
-		$cats = [
-				new CategorieTest(1, "Planten", 22),
-				new CategorieTest(2, "Meubels", 22),
-				new CategorieTest(3, "Vijver", 22),
-				new CategorieTest(4, "Zomershit", 22)
-			];
-		
 		return view('admin.categorie-overzicht', ['categorien' => $cats]);
 	}
 	

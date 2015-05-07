@@ -1,6 +1,7 @@
 <?php namespace TomCo\models;
 
 use Illuminate\Database\Eloquent\Model;
+use TomCo\models\Product;
 
 class Categorie extends Model {
 
@@ -12,6 +13,11 @@ class Categorie extends Model {
 	
 	public function subCategorien()
 	{
-		return $this->hasMany('TomCo\models\Categorie');
+		return $this->hasMany('tomco\models\Categorie', 'parent_id');
+	}
+	
+	public function products()
+	{
+		return $this->hasMany('TomCo\models\Product', 'categorie_categorie_id');
 	}
 }

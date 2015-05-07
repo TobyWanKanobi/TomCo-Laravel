@@ -22,7 +22,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="{{ URL::to("/") }}">Home <span class="sr-only">(current)</span></a></li>
-					<li><a href="{{ URL::to("products/browse") }}">Producten</a></li>
+					<li><a href="{{ URL::to("producten") }}">Producten</a></li>
 					<li><a href="{{ URL::to("over-ons") }}">Over Ons</a></li>
 					<li><a href="{{ URL::to("contact") }}">Contact</a></li>
 					<li>

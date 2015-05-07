@@ -33,7 +33,11 @@ Route::get('login', ['as' => 'login', 'uses' => 'Auth\AuthController@login']);
 Route::post('login', ['as' => 'login_poging', 'uses' => 'Auth\AuthController@poging']);
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@logout']);
 
-Route::get('products/browse', ['as' => 'browse-products', 'uses' => 'ShopController@product']);
+Route::get('producten', ['as' => 'browse-products', 'uses' => 'CategorieController@index']);
+Route::any('categorie/{naam}', [
+  'as'   => 'categorie',
+  'uses' => 'CategorieController@index'
+]);
 
 /*
 |--------------------------------------------------------------------------
