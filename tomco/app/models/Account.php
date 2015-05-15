@@ -8,10 +8,30 @@ class Account extends Model implements AuthenticatableContract {
 
 	use Authenticatable;
 	
-	protected $primaryKey = 'account_id';
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
 	protected $table = 'account';
+	
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = ['email', 'wachtwoord'];
+	
+	/**
+	 * The attributes excluded from the model's JSON form.
+	 *
+	 * @var array
+	 */
+	protected $hidden = ['password', 'remember_token'];
+		
+	protected $primaryKey = 'account_id';
+		
 	public $timestamps = false;
-	public $fillable = ['email', 'wachtwoord'];
 	
 	public function getAuthIdentifier() {
 		return $this->account_id;
@@ -42,6 +62,10 @@ class Account extends Model implements AuthenticatableContract {
 		if (!$isRememberTokenAttribute) {
 			parent::setAttribute($key, $value);
 		}
+	}
+	
+	public function customer() {
+		return $this->hasOne('TomCo\models\Customer', 'fk_account_id');
 	}
 	
 }

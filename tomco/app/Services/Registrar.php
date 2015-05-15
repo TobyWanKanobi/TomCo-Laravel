@@ -1,8 +1,10 @@
 <?php namespace TomCo\Services;
 
-use TomCo\User;
+use TomCo\models\Account;
+use TomCo\models\Customer;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
+use Illuminate\Support\Facades\DB;
 
 class Registrar implements RegistrarContract {
 
@@ -15,8 +17,7 @@ class Registrar implements RegistrarContract {
 	public function validator(array $data)
 	{
 		return Validator::make($data, [
-			'name' => 'required|max:255',
-			'email' => 'required|email|max:255|unique:users',
+			'email' => 'required|email|max:255|unique:account',
 			'password' => 'required|confirmed|min:6',
 		]);
 	}
@@ -29,11 +30,34 @@ class Registrar implements RegistrarContract {
 	 */
 	public function create(array $data)
 	{
-		return User::create([
-			'name' => $data['name'],
+	
+		$account = new Account([
 			'email' => $data['email'],
-			'password' => bcrypt($data['password']),
+			'wachtwoord' => bcrypt($data['password']),
+			]);
+			
+		$customer = new Customer([
+			'voornaam' => $data['firstname'],
+			'tussenvoegsel' => $data['insertion'],
+			'achternaam' => $data['lastname'],
+			'straatnaam' => $data['street'],
+			'huisnummer' => $data['number'],
+			'toevoeging' => $data['addition'],
+			'postcode' => $data['postalcode'],
+			'woonplaats' => $data['city']
 		]);
+		
+		DB::transaction(function() use ($account, $customer)
+		{
+		
+			$account->save();
+			Account::find($account->getKey())->customer()->save($customer);
+			
+		
+		});
+		
+		
+		return $account;
 	}
 
 }
