@@ -4,8 +4,12 @@ use TomCo\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\DB;
+use TomCo\models\Account;
+use TomCo\models\Customer;
 use TomCo\Http\Requests\LoginFormRequest;
+use TomCo\Http\Requests\RegistrationFormRequest;
 
 use Auth;
 use Hash;
@@ -40,23 +44,28 @@ class AuthController extends Controller {
 		$this->middleware('guest', ['except' => ['logout', 'register']]);
 	}
 	
-	public function login() {
-		
-		
+	public function login()
+	{
+	
 		return view('auth.login');
 	}
 	
-	public function poging(LoginFormRequest $request) {
+	public function poging(LoginFormRequest $request)
+	{
 		
 		$name = $request->input('email');
 		$pass = $request->input('wachtwoord');
 		
 		if (Auth::attempt(['email' => $name, 'password' => $pass])) {
 		
-			// The user is active, not suspended, and exists.
+			return redirect('/');
 			
 		} else {
-			//$login = "fail" . $name . $pass;
+
+			$errors = new MessageBag();
+			$errors->add('wachtwoord', 'Ongeldige inloggegevens');
+			return redirect()->back()->withErrors($errors)->withInput(['email' => $name]);
+			
 		}
 		
 		return view('auth.login');
@@ -69,10 +78,36 @@ class AuthController extends Controller {
 		return view('home.home');
 	}
 	
-	public function register() {
+	public function postRegister(RegistrationFormRequest $request) {
 		
+		//print_r($request);
+		$account = new Account([
+			'email' => $request->input('email'),
+			'wachtwoord' => bcrypt($request->input('password')),
+			]);
+			
+		$customer = new Customer([
+			'voornaam' => $request->input('firstname'),
+			'tussenvoegsel' => $request->input('insertion'),
+			'achternaam' => $request->input('lastname'),
+			'straatnaam' => $request->input('street'),
+			'huisnummer' => $request->input('number'),
+			'huisnummer_toevoeging' => $request->input('addition'),
+			'postcode' => $request->input('postalcode'),
+			'woonplaats' => $request->input('city')
+		]);
 		
-		return view('auth.register');
+		// Create transaction if an error occurs neither account or customer will be added to the database
+		DB::transaction(function() use ($account, $customer)
+		{
+			$account->save();
+			Account::find($account->getKey())->customer()->save($customer);
+		});
+		
+		// Login to created account
+		$this->auth->login($account);
+
+		return redirect($this->redirectPath());
 	}
 
 }

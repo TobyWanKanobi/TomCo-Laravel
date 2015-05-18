@@ -1,6 +1,23 @@
 <div id="header">
-	<div id="logo">
-		<img src="{{ URL::asset('assets/images/logo.png') }}" alt="logo" style="width:auto;height:200px">
+	
+	<div class="row">
+	
+		<div class="col-md-5" id="logo">
+			<img src="{{ URL::asset('assets/images/logo.png') }}" alt="logo" style="width:auto;height:200px">
+		</div>
+		
+		<div class="pull-right" style="padding: 5px;">
+		
+			@if (Auth::guest())
+				<a href="{{ URL::to('login') }}" class="btn btn-success"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Inloggen</a>
+				<a href="{{ URL::to('register') }}" class="btn btn-success"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Registreren</a>
+			@else
+				<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Winkelwagen</a>
+				<a href="{{ URL::to('logout') }}" class="btn btn-success"><span class="glyphicon glyphicon-eject" aria-hidden="true"></span> Logout</a>
+			@endif
+		
+		</div>	
+		
 	</div>
 	
 	<!-- Navigation -->
@@ -25,13 +42,6 @@
 					<li><a href="{{ URL::to("producten") }}">Producten</a></li>
 					<li><a href="{{ URL::to("over-ons") }}">Over Ons</a></li>
 					<li><a href="{{ URL::to("contact") }}">Contact</a></li>
-					<li>
-						@if (Auth::guest())
-							<a href="{{ URL::to("login") }}">Inloggen</a>
-						@else
-							<a href="{{ URL::to("logout") }}">Logout</a>
-						@endif
-					</li>
 				</ul>
 				
 				<div class="col-sm-3 col-md-3 pull-right">

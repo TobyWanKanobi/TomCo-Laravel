@@ -27,8 +27,8 @@ Route::get('contact', function() {
     return View::make('home.contact');
 });
 
-
-Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@register']);
+//rourw::get('/', ['as' => 'home', 'uses' => ]);
+Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
 Route::get('login', ['as' => 'login', 'uses' => 'Auth\AuthController@login']);
 Route::post('login', ['as' => 'login_poging', 'uses' => 'Auth\AuthController@poging']);
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@logout']);

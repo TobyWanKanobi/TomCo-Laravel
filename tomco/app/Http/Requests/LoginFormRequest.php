@@ -30,8 +30,8 @@ class LoginFormRequest extends Request {
 	public function messages()
 	{
     return [
-        'email.required' => 'Er, je bent je e-mail vergeten in te vullen',
-        'wachtwoord.required' => 'Wachtwoord is verplicht',
+        'email.required' => 'Vul een geldig e-mailadres in',
+        'wachtwoord.required' => 'Vul het wachtwoord in',
     ];
 }
 
