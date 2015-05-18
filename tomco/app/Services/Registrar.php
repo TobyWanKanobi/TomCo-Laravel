@@ -16,10 +16,38 @@ class Registrar implements RegistrarContract {
 	 */
 	public function validator(array $data)
 	{
-		return Validator::make($data, [
+	
+		$messages = [
+		'required' => ':attribute is verplicht',
+		'integer' => 'Ongeldig :attribute',
+		'regex' => 'Ongeldige postcode'];
+		
+		$validator = Validator::make($data, [
+			'firstname' => 'required',
+			'insertion' => '',
+			'lastname' => 'required',
+			'street' => 'required',
+			'number' => 'required|integer',
+			'addition' => '',
+			'postalcode' => ['required', 'regex:/^[1-9][0-9]{3}\s?[a-zA-Z]{2}$/'],
+			'city' => 'required' ,
 			'email' => 'required|email|max:255|unique:account',
 			'password' => 'required|confirmed|min:6',
-		]);
+		], $messages);
+		
+		$validator->setAttributeNames([
+			'firstname' => 'Voornaam', 
+			'insertion' => 'Tussenvoegsel',
+			'lastname' => 'Achternaam',
+			'street' => 'Straat',
+			'number' => 'Huisnummer',
+			'addition' => 'Toevoeging',
+			'postalcode' => 'Postcode',
+			'city' => 'Woonplaats',
+			'email' => 'E-mail',
+			'password' => 'Wachtwoord']);
+		
+		return $validator; 
 	}
 
 	/**
