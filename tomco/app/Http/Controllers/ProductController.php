@@ -50,9 +50,18 @@ class ProductController extends Controller {
 
 	public function postEdit(ProductFormRequest $request)
 	{
-		//$product = Product::create($request->all());
+		$product = Product::find($request->input('product_id'));
 		
-		return view('admin.product.edit', ['product' => $product]);
+		$product->naam = $request->input('naam');
+		$product->prijs = $request->input('prijs');
+		$product->omschrijving_kort = $request->input('omschrijving_kort');
+		$product->omschrijving_lang = $request->input('omschrijving_lang');
+		//$product->afbeelding_klein = $request->input('afbeelding_klein');
+		//$product->afbeelding_groot = $request->input('afbeelding_groot');
+		
+		$product->save();
+		
+		return redirect()->route('products');
 	}
 	
 	public function postDelete($id)

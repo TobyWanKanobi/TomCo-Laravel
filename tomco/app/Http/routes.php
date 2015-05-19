@@ -53,7 +53,7 @@ Route::get('admin/producten', ['as' => 'products', 'uses' => 'ProductController@
 Route::get('admin/product/nieuw', ['as' => 'create_product', 'uses' => 'ProductController@getCreate']);
 Route::post('admin/product/nieuw', ['as' => 'store_product', 'uses' => 'ProductController@postCreate']);
 Route::get('admin/product/wijzig/{id}', ['as' => 'edit_product', 'uses' => 'ProductController@getEdit']);
-Route::post('admin/product/wijzig/{id}', ['as' => 'save_product', 'uses' => 'ProductController@postEdit']);
+Route::post('admin/product/wijzig', ['as' => 'save_product', 'uses' => 'ProductController@postEdit']);
 Route::delete('admin/product/verwijder/{id}', ['as' => 'delete_product', 'uses' => 'ProductController@postDelete']);
 
 Route::controllers([

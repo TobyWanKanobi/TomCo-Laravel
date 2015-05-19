@@ -1,4 +1,4 @@
-{!! Form::token() !!}
+	{!! Form::hidden('product_id', $product->product_id) !!}
 
 <div class="form-group">
 	{!! Form::label('naam', 'Naam') !!}
