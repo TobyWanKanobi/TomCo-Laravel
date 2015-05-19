@@ -39,20 +39,30 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="{{ URL::to("/") }}">Home <span class="sr-only">(current)</span></a></li>
-					<li><a href="{{ URL::to("producten") }}">Producten</a></li>
-					<li><a href="{{ URL::to("over-ons") }}">Over Ons</a></li>
-					<li><a href="{{ URL::to("contact") }}">Contact</a></li>
+					<li><a href="{{ URL::to('producten') }}">Producten</a></li>
+					<li><a href="{{ URL::to('over-ons') }}">Over Ons</a></li>
+					<li><a href="{{ URL::to('contact') }}">Contact</a></li>
 				</ul>
 				
 				<div class="col-sm-3 col-md-3 pull-right">
-					<form class="navbar-form" role="search">
+				
+					{!! Form::open(['route' => 'search', 'method' => 'get', 'class' => 'navbar-form', 'role' => 'search']) !!}
+						
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+							{!! Form::text('term','', ['class' => 'form-control', 'placeholder' => 'Zoeken']) !!}
 							<div class="input-group-btn">
 								<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 							</div>
 						</div>
-					</form>
+					{!! Form::close() !!}
+					<!--<form action="{{ URL::route('search') }}" method="get" class="navbar-form" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" name="term" id="srch-term">
+							<div class="input-group-btn">
+								<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+							</div>
+						</div>
+					</form>-->
 				</div>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->

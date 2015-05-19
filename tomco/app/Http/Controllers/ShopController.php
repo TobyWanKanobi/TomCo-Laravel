@@ -3,6 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 use TomCo\models\Product;
 use TomCo\models\Categorie;
+use Illuminate\Support\Facades\Input;
 
 class ShopController extends Controller {
 
@@ -33,6 +34,21 @@ class ShopController extends Controller {
 		$products = Product::all();
 		
 		return view('pages.browse-products', ['products' => $products]);
+	}
+	
+	public function search()
+	{
+		if(Input::has('term')) {
+			
+			$term = Input::get('term');
+			$products = Product::where('naam', 'LIKE', '%'.$term.'%')
+			->orWhere('omschrijving_kort', 'LIKE', '%'.$term.'%')
+			->orWhere('omschrijving_kort', 'LIKE', '%'.$term.'%')->get();
+			
+			return view('shop.search-results', ['products' => $products]);
+		}
+		
+		return redirect()->back();
 	}
 	
 	/**
