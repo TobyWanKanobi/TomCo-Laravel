@@ -8,17 +8,6 @@ use Illuminate\View\View;
 
 class ProductController extends Controller {
 
-	/*
-	|--------------------------------------------------------------------------
-	| Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| This controller renders your application's "dashboard" for users that
-	| are authenticated. Of course, you are free to change or remove the
-	| controller as you wish. It is just here to get your app started!
-	|
-	*/
-
 	/**
 	 * Create a new controller instance.
 	 *
@@ -26,85 +15,52 @@ class ProductController extends Controller {
 	 */
 	public function __construct()
 	{
-		//$this->middleware('auth');
 	}
 
-	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
-	 */
 	public function index()
 	{
-		return view('admin.dashboard');
-	}
 	
-	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
-	 */
-	public function overzicht()
-	{
-		
 		$products = Product::all();
 		
-		return view('admin.overzicht-product', ['products' => $products]);
+		return view('admin.product.index', ['products' => $products]);
 	}
 	
-	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
-	 */
-	public function verwijderen($id)
-	{
-		$deleted=Product::find($id);
-		$deleted->delete();
-		$products=Product::all();
-
-		return view('admin.overzicht-product', ['products' => $products]);
-	}
-	
-	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
-	 */
-	public function wijzigen(ProductFormRequest $request)
-	{
-		$product = Product::create($request->all());
-		//$update=Product::find($id);
-		//$update = Product::update($request->all());
-		//$this->validate($request, ['naam' => 'required']);
-		//$products=Product::all();
-		
-		return view('admin.overzicht-product', ['product' => $product]);
-	}
-	
-	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
-	 */
-	public function nieuw()
+	public function getCreate()
 	{
 		
 		$product = new Product();
 		
-		return view('admin.nieuw-product', ['product' => $product]);
+		return view('admin.product.create', ['product' => $product]);
 	}
 	
-	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
-	 */
-	public function opslaan(ProductFormRequest $request)
+	public function postCreate(ProductFormRequest $request)
 	{
 		$product = Product::create($request->all());
 		
-		return view('admin.nieuw-product', ['product' => $product]);
+		return redirect()->route('products');
+	}
+	
+	public function getEdit($id)
+	{
+		
+		$product = Product::find($id);
+		
+		return view('admin.product.edit', ['product' => $product]);
+	}
+
+	public function postEdit(ProductFormRequest $request)
+	{
+		//$product = Product::create($request->all());
+		
+		return view('admin.product.edit', ['product' => $product]);
+	}
+	
+	public function postDelete($id)
+	{
+		
+		Product::find($id)->delete();
+		
+		return redirect()->route('products');
 	}
 
 }

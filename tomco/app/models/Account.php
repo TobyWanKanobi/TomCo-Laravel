@@ -65,7 +65,7 @@ class Account extends Model implements AuthenticatableContract {
 	}
 	
 	public function customer() {
-		return $this->hasOne('TomCo\models\Customer', 'fk_account_id');
+		return $this->hasOne('TomCo\models\Customer', 'account_id');
 	}
 	
 }

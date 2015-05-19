@@ -22,11 +22,13 @@ class ProductFormRequest extends Request {
 	public function rules()
 	{
 		return [
+			'categorie_id' => '',
 			'naam' => 'required',
-			'omschrijving' => 'required',
 			'prijs' => 'required',
-			//'afbeelding' => 'required',
-			//'categorie' => 'required',
+			'omschrijving_kort' => 'required',
+			'omschrijving_lang' => 'required',
+			'afbeelding_groot' => '',
+			'afbeelding_groot' => ''
 		];
 	}
 

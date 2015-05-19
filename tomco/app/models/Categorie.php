@@ -18,6 +18,6 @@ class Categorie extends Model {
 	
 	public function products()
 	{
-		return $this->hasMany('TomCo\models\Product', 'categorie_categorie_id');
+		return $this->hasMany('TomCo\models\Product', 'categorie_id');
 	}
 }

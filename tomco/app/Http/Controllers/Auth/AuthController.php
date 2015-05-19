@@ -90,9 +90,9 @@ class AuthController extends Controller {
 			'voornaam' => $request->input('firstname'),
 			'tussenvoegsel' => $request->input('insertion'),
 			'achternaam' => $request->input('lastname'),
-			'straatnaam' => $request->input('street'),
-			'huisnummer' => $request->input('number'),
-			'huisnummer_toevoeging' => $request->input('addition'),
+			'adres_straat' => $request->input('street'),
+			'adres_nummer' => $request->input('number'),
+			'adres_toevoeging' => $request->input('addition'),
 			'postcode' => $request->input('postalcode'),
 			'woonplaats' => $request->input('city')
 		]);

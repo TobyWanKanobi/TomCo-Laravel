@@ -12,11 +12,11 @@ class Customer extends Model {
 		'voornaam',
 		'tussenvoegsel',
 		'achternaam',
-		'straatnaam',
-		'huisnummer',
+		'adres_straat',
+		'adres_nummer',
+		'adres_toevoeging',
 		'postcode',
-		'woonplaats',
-		'huisnummer_toevoeging'];
+		'woonplaats'];
 	
 	public function account() {
 		return $this->hasOne('TomCo\models\Account');

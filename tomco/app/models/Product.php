@@ -8,6 +8,13 @@ class Product extends Model {
 	public $timestamps = false;
 	protected $primaryKey = 'product_id';
 	
-	public $fillable = ['naam', 'omschrijving', 'prijs', 'categorie', 'afbeelding_naam'];
+	public $fillable = [
+		'categorie_id',
+		'naam',
+		'prijs',
+		'omschrijving_kort',
+		'omschrijving_lang',
+		'afbeelding_klein',
+		'afbeelding_groot'];
 
 }
