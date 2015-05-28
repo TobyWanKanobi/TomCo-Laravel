@@ -166,13 +166,13 @@
                         <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
 					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#producten"><i class="fa fa-fw fa-cart-plus"></i> Producten <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#producten"><i class="fa fa-fw fa-archive"></i> Producten <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="producten" class="collapse">
                             <li>
-                                <a href="{{ URL::route('products') }}">Overzicht</a>
+                                <a href="{{ URL::route('products') }}"><i class="fa fa-fw fa-sitemap"></i>Overzicht</a>
                             </li>
 							<li>
-                                <a href="{{ URL::route('create_product') }}">Nieuw product</a>
+                                <a href="{{ URL::route('create_product') }}"><i class="fa fa-fw fa-plus"></i>Nieuw product</a>
                             </li>
                         </ul>
                     </li>
@@ -180,8 +180,16 @@
 						<a href="#"><i class="fa fa-fw fa-sitemap"></i> Bestellingen</a>
 					</li>
 					<li>
-						<a href="#"><i class="fa fa-fw fa-sitemap"></i> Categorieen</a>
-					</li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#categorieen"><i class="fa fa-fw fa-archive"></i> Categorie&euml;n <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="categorieen" class="collapse">
+                            <li>
+                                <a href="{{ URL::route('categorie_beheer') }}"><i class="fa fa-fw fa-sitemap"></i>Overzicht</a>
+                            </li>
+							<li>
+                                <a href="{{ URL::route('create_categorie') }}"><i class="fa fa-fw fa-plus"></i>Nieuwe Categorie</a>
+                            </li>
+                        </ul>
+                    </li>
 					<li>
 						<a href="#"><i class="fa fa-fw fa-group"></i> Gebruikers</a>
 					</li>

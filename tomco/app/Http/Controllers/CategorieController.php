@@ -1,5 +1,6 @@
 <?php namespace TomCo\Http\Controllers;
 
+use TomCo\Http\Requests\CategorieFormRequest;
 use TomCo\models\Product;
 use TomCo\models\CategorieTest;
 use TomCo\models\Categorie;
@@ -50,20 +51,55 @@ class CategorieController extends Controller {
 	
 	public function overzicht()
 	{
-	
+		$cats = Categorie::all();
+		//$cats = Categorie::wherenull('parent_id')->with('subCategorien')->get();
+		
 		return view('admin.categorie-overzicht', ['categorien' => $cats]);
 	}
 	
-	public function toevoegen()
+	public function getCreate()
 	{
+		$categorie = new Categorie();
+		
+		return view('admin.categorie.create', ['categorie' => $categorie]);
 	}
 	
-	public function verwijderen()
+	public function toevoegen(CategorieFormRequest $request)
 	{
+		$categorie = Categorie::create($request->all());
+		
+		return redirect()->route('categorie_beheer');
 	}
 	
-	public function verplaatsen()
+	public function verwijderen($id)
 	{
+		Categorie::find($id)->delete();
+		
+		return redirect()->route('categorie_beheer');
+	}
+	
+	public function getEdit($id)
+	{
+		
+		$cats = Categorie::find($id);
+		
+		return view('admin.categorie.edit', ['categorie' => $cats]);
+	}
+	
+	public function wijzigen(CategorieFormRequest $request)
+	{
+		$categorie = Categorie::find($request->input('categorie_id'));
+		
+		$categorie->naam = $request->input('naam');
+		//$categorie->prijs = $request->input('prijs');
+		//$categorie->omschrijving_kort = $request->input('omschrijving_kort');
+		//$categorie->omschrijving_lang = $request->input('omschrijving_lang');
+		//$product->afbeelding_klein = $request->input('afbeelding_klein');
+		//$product->afbeelding_groot = $request->input('afbeelding_groot');
+		
+		$categorie->save();
+		
+		return redirect()->route('categorie');
 	}
 
 }

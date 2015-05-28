@@ -1,6 +1,6 @@
 <?php namespace TomCo\models;
 
-class CategorieTest {
+class CategorieTest extends Model{
 
 	protected $categorie_id;
 	protected $naam;

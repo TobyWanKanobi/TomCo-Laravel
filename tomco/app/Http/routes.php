@@ -58,6 +58,12 @@ Route::get('admin/product/wijzig/{id}', ['as' => 'edit_product', 'uses' => 'Prod
 Route::post('admin/product/wijzig', ['as' => 'save_product', 'uses' => 'ProductController@postEdit']);
 Route::delete('admin/product/verwijder/{id}', ['as' => 'delete_product', 'uses' => 'ProductController@postDelete']);
 
+Route::get('admin/categorie/nieuw', ['as' => 'create_categorie', 'uses' => 'CategorieController@getCreate']);
+Route::post('admin/categorie/nieuw', ['as' => 'store_categorie', 'uses' => 'CategorieController@toevoegen']);
+Route::get('admin/categorie/wijzig/{id}', ['as' => 'edit_categorie', 'uses' => 'CategorieController@getEdit']);
+Route::post('admin/categorie/wijzig', ['as' => 'save_categorie', 'uses' => 'CategorieController@wijzigen']);
+Route::delete('admin/categorie/verwijder/{id}', ['as' => 'delete_categorie', 'uses' => 'CategorieController@verwijderen']);
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

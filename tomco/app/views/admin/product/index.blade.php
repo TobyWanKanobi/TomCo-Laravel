@@ -30,21 +30,21 @@
 							</td>
 							
 							<div class="modal fade" id="product-{{ $product->product_id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<h4 class="modal-title" id="myModalLabel">Verwijderen</h4>
-									</div>
-									<div class="modal-body">
-										Weet je zeker dat je {{ $product->naam }} wilt verwijderen?
-									</div>
-									<div class="modal-footer">
-										{!! Form::open(['route' => ['delete_product', $product->product_id], 'method' => 'delete']) !!}
-										<button type="button" class="btn btn-default" data-dismiss="modal">Annuleer</button>
-										<button type="submit" href="{{ URL::route('delete_product', $product->product_id) }}" class="btn btn-primary">Delete</button>
-										{!! Form::close() !!}
-									</div>
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+											<h4 class="modal-title" id="myModalLabel">Verwijderen</h4>
+										</div>
+										<div class="modal-body">
+											Weet je zeker dat je {{ $product->naam }} wilt verwijderen?
+										</div>
+										<div class="modal-footer">
+											{!! Form::open(['route' => ['delete_product', $product->product_id], 'method' => 'delete']) !!}
+											<button type="button" class="btn btn-default" data-dismiss="modal">Annuleer</button>
+											<button type="submit" href="{{ URL::route('delete_product', $product->product_id) }}" class="btn btn-primary">Delete</button>
+											{!! Form::close() !!}
+										</div>
 									</div>
 								</div>
 							</div>
