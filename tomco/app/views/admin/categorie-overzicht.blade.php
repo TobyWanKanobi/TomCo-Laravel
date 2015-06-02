@@ -27,9 +27,9 @@
 							<td>{{ $categorie->parent_id }}</td>
 							<td>{{ $categorie->naam }}</td>
 							<td>
-								<button class="btn btn-success" data-categorieid="{{ $categorie->categorie_id }}"><i class="glyphicon glyphicon-pencil"></i> Wijzigen</button> 
+								<button class="btn btn-success" data-toggle="modal" data-target="#categorie-{{ $categorie->categorie_id }}"><i class="glyphicon glyphicon-pencil"></i> Wijzigen</button> 
 								
-								<a class="btn btn-danger" data-toggle="modal" data-target="#categorie-{{ $categorie->categorie_id }}" href="#">
+								<a class="btn btn-danger" data-toggle="modal" data-target="categorie-{{ $categorie->categorie_id }}" href="#">
 									<i class="glyphicon glyphicon-trash"></i> Verwijderen
 								</a>
 							</td>
@@ -77,14 +77,14 @@
 	$(document).ready(function(){
 		$('table').on('click', 'td button', function(){
 		
-			$.ajax({
+			/*$.ajax({
 				url : '{!! URL::to('/admin/categorie/wijzig') !!}' + '/' + $(this).data('categorieid'),
 				success: function(result) {
 					$('#edit-modal').remove();
 					$('body').append(result);
 					$('#edit-modal').modal('show');
 				}
-			});
+			});*/
 			console.log('howdie');
 		});
 	});
