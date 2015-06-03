@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 use TomCo\models\Product;
 use TomCo\models\Categorie;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 class ShopController extends Controller {
 
@@ -51,18 +52,60 @@ class ShopController extends Controller {
 		return redirect()->back();
 	}
 	
-	/**
-	 * Show the application welcome screen to the user.
-	 *
-	 * @return Response
-	 */
-	public function product()
+	public function shoppingCart()
 	{
-	//	$products = Product::all();
-	//	$categories = Categorie::wherenull('parent_id')->with('subCategorien')->get();
+		$items = Session::get('shopping_cart');
+		$ids = [];
+		if($items) {
+
+			foreach($items as $item) {
+			
+				array_push($ids, $item['id']);
+			}
 		
-		//return view('pages.browse-products', ['categorien' => $categories, 'products' => $categories->products()->get()]);
-		return "Hello World";
+		}
+		
+		$products = Product::whereIn('product_id', $ids)->get();
+		
+		return view('shop.shopping-cart', ['products' => $products]);
+	}
+	
+	public function addToCart($id)
+	{
+		$product = Product::find($id);
+		
+		
+		if($product != null) {
+			
+			$cart = Session::get('shopping_cart');
+			$isOnCard = false;
+			if($cart) { // Lege array wordt automatisch omgezet naar boolean false
+			
+				foreach($cart as $item) {
+					
+					if($item['id'] == $id) {
+					
+						echo 'Product in array';
+						$isOnCard = true;
+					}
+		
+				}
+			}
+			
+			if(!$isOnCard) {
+				Session::push('shopping_cart', ['id' => $id, 'quantity' => 1]);
+			}
+			
+		}
+		
+		print_r(Session::all());
+		
+		return response('hallo');
+	}
+	
+	public function removeFromCart($id)
+	{
+		return View::make('Product to add' . $id);
 	}
 	
 	/**
