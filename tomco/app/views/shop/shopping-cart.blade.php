@@ -47,7 +47,7 @@
 </table>
 <script type="text/javascript">
 $(document).ready(function(){
-	$('.delete-item').on('click', function(event){
+	/*$('.delete-item').on('click', function(event){
 		event.preventDefault();
 		console.log('dsfsdf');
 		
@@ -63,7 +63,7 @@ $(document).ready(function(){
 			},
 		});
 		
-	});
+	});*/
 });
 </script>
 @stop

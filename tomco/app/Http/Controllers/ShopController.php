@@ -122,7 +122,8 @@ class ShopController extends Controller {
 			
 		}
 		
-		return response('hallo');
+		return redirect()->route('shopping_cart');
+		//return response('hallo');
 	}
 	
 	/**
