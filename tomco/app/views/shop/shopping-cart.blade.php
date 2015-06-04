@@ -7,6 +7,8 @@
 			<th>Product</th>
 			<th>Prijs</th>
 			<th>Omschrijving</th>
+			<th>Aantal</th>
+			<th>Totaal</th>
 			<th>Actie</th>
 		</tr>
 	</thead>
@@ -17,16 +19,51 @@
 			<td>{!! $product->naam !!}</td>
 			<td>{!! $product->prijs !!}</td>
 			<td>{!! $product->omschrijving_kort !!}</td>
-			<td><span class="glyphicon glyphicon-shopping-cart"></span> Toevoegen</td>
+			<td style="width: 10%;">
+			<form>
+				<div class="form-group">
+					<input type="text" class="form-control" name="" />
+				</div>
+				
+			</form>
+			</td>
+			<td>&euro; {!! $product->prijs !!}</td>
+			<td><a href="{{ URL::route('remove_from_cart', ['id' => $product->product_id]) }}" class="delete-item">Verwijder</a></td>
 		</tr>
 	@endforeach
+	@if (count($products) == 0)
+		<tr>
+			<td colspan="8">Winkelwagen bevat geen producten</td>
+		</tr>
+	@endif
 	</tbody>
-	@if (!empty($products))
+	@if (count($products) > 0)
 	<tfoot>
 		<tr>
-			<td colspan="5"><button class="btn btn-primary pull-right"><span class="glyphicon glyphicon-shopping-cart"></span> Betalen</button></td>
+			<td colspan="8"><button class="btn btn-primary pull-right"><span class="glyphicon glyphicon-shopping-cart"></span> Betalen</button></td>
 		</tr>
 	</tfoot>
 	@endif
 </table>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.delete-item').on('click', function(event){
+		event.preventDefault();
+		console.log('dsfsdf');
+		
+		$.ajax({
+			url : $(this).attr('href'),
+			complete : function(response){
+				console.log('Success: delete item from shoppingcart');
+				$(event.target).closest('tr').remove();
+				
+			},
+			error : function(response){
+				console.log('Failed: delete item from shoppingcart');
+			},
+		});
+		
+	});
+});
+</script>
 @stop

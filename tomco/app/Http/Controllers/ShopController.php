@@ -105,7 +105,24 @@ class ShopController extends Controller {
 	
 	public function removeFromCart($id)
 	{
-		return View::make('Product to add' . $id);
+		$cart = Session::get('shopping_cart');
+		$isOnCard = false;
+		if($cart) { // Lege array wordt automatisch omgezet naar boolean false
+			
+			foreach($cart as $key => $item) {
+					
+				if($item['id'] == $id) {
+					unset($cart[$key]);
+					$isOnCard = true;
+					Session::put('shopping_cart', $cart);
+		
+				}
+			}
+			
+			
+		}
+		
+		return response('hallo');
 	}
 	
 	/**
