@@ -37,7 +37,7 @@
 				type: 'post',
 				data : $('#edit-categorie-form').serialize(),
 				success : function(result){
-					window.location.replace("{!! URL::route('categories'); !!}");
+					window.location.replace("{!! URL::route('categorie_beheer'); !!}");
 				},
 				error: function(result) {
 					

@@ -54,7 +54,7 @@ class CategorieController extends Controller {
 		$cats = Categorie::all();
 		//$cats = Categorie::wherenull('parent_id')->with('subCategorien')->get();
 		
-		return view('admin.categorie-overzicht', ['categorien' => $cats]);
+		return view('admin.categorie.categorie-overzicht', ['categorien' => $cats]);
 	}
 	
 	public function getCreate()
@@ -80,7 +80,6 @@ class CategorieController extends Controller {
 	
 	public function getEdit($id)
 	{
-		
 		$cats = Categorie::find($id);
 		
 		return view('admin.categorie.edit', ['categorie' => $cats]);
@@ -91,6 +90,7 @@ class CategorieController extends Controller {
 		$categorie = Categorie::find($request->input('categorie_id'));
 		
 		$categorie->naam = $request->input('naam');
+		$categorie->parent_id = $request->input('parent_id');
 		//$categorie->prijs = $request->input('prijs');
 		//$categorie->omschrijving_kort = $request->input('omschrijving_kort');
 		//$categorie->omschrijving_lang = $request->input('omschrijving_lang');
@@ -99,7 +99,7 @@ class CategorieController extends Controller {
 		
 		$categorie->save();
 		
-		return redirect()->route('categorie');
+		return redirect()->route('categorie_beheer');
 	}
 
 }
