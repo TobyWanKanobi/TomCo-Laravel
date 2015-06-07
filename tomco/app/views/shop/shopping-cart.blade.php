@@ -15,20 +15,20 @@
 	<tbody>
 	@foreach($products as $product)
 		<tr>
-			<td>{!! $product->afbeelding_klein !!}</td>
-			<td>{!! $product->naam !!}</td>
-			<td>{!! $product->prijs !!}</td>
-			<td>{!! $product->omschrijving_kort !!}</td>
+			<td><img src="{!! URL::asset('assets/images/artikelen/' . $product['image']) !!}" alt="{!! $product['name'] !!}" /></td>
+			<td>{!! $product['name'] !!}</td>
+			<td>{!! $product['price'] !!}</td>
+			<td>{!! $product['description'] !!}</td>
 			<td style="width: 10%;">
 			<form>
 				<div class="form-group">
-					<input type="text" class="form-control" name="" />
+					<input type="text" class="form-control" name="" value="{!! $product['quantity'] !!}" />
 				</div>
 				
 			</form>
 			</td>
-			<td>&euro; {!! $product->prijs !!}</td>
-			<td><a href="{{ URL::route('remove_from_cart', ['id' => $product->product_id]) }}" class="delete-item">Verwijder</a></td>
+			<td>&euro; {!! $product['price'] * $product['quantity'] !!}</td>
+			<td><a href="{{ URL::route('remove_from_cart', ['id' => $product['id']]) }}" class="delete-item">Verwijder</a></td>
 		</tr>
 	@endforeach
 	@if (count($products) == 0)

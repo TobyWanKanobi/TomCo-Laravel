@@ -54,88 +54,65 @@ class ShopController extends Controller {
 	
 	public function shoppingCart()
 	{
-		$items = Session::get('shopping_cart');
-		$ids = [];
-		if($items) {
-
-			foreach($items as $item) {
-			
-				array_push($ids, $item['id']);
-			}
-		
+		$products = Session::get('shopping_cart');
+		if($products == null) {
+			$items = [];
 		}
-		
-		$products = Product::whereIn('product_id', $ids)->get();
 		
 		return view('shop.shopping-cart', ['products' => $products]);
 	}
 	
-	public function addToCart($id)
+	public function addToCart($id, $quantity)
 	{
 		$product = Product::find($id);
 		
-		
 		if($product != null) {
 			
+			$item = [
+				'id' => $product->product_id,
+				'name' => $product->naam,
+				'description' => $product->omschrijving_kort,
+				'price' => $product->prijs,
+				'image' => $product->afbeelding_klein,
+				'quantity' => $quantity,
+			];
+			
 			$cart = Session::get('shopping_cart');
-			$isOnCard = false;
-			if($cart) { // Lege array wordt automatisch omgezet naar boolean false
 			
-				foreach($cart as $item) {
-					
-					if($item['id'] == $id) {
-					
-						echo 'Product in array';
-						$isOnCard = true;
-					}
+			if($cart == null) {
+				$cart = [];
+			}
+			
+			if(array_key_exists($product->product_id, $cart)) {
+				$cart[$product->product_id] = $item;
+				//replace
+			
+			} else {
+				$cart[(string)$product->product_id] = $item;
+				//add
+			}
 		
-				}
-			}
-			
-			if(!$isOnCard) {
-				Session::push('shopping_cart', ['id' => $id, 'quantity' => 1]);
-			}
+			Session::put('shopping_cart', $cart);
+			var_dump(Session::get('shopping_cart'));
 			
 		}
 		
-		print_r(Session::all());
-		
-		return response('hallo');
+		return redirect()->route('shopping_cart');
 	}
 	
 	public function removeFromCart($id)
 	{
 		$cart = Session::get('shopping_cart');
-		$isOnCard = false;
-		if($cart) { // Lege array wordt automatisch omgezet naar boolean false
+		if($cart) {
 			
-			foreach($cart as $key => $item) {
-					
-				if($item['id'] == $id) {
-					unset($cart[$key]);
-					$isOnCard = true;
-					Session::put('shopping_cart', $cart);
-		
-				}
+			if(array_key_exists($id, $cart)) {
+				unset($cart[$id]);
+				Session::put('shopping_cart', $cart);
 			}
-			
 			
 		}
 		
 		return redirect()->route('shopping_cart');
-		//return response('hallo');
 	}
 	
-	/**
-	 * Show the application welcome screen to the user.
-	 *
-	 * @return Response
-	 */
-	/*public function product()
-	{
-		$products = Product::all();
-		
-		return view('pages.product-detail', ['products' => $products]);
-	}*/
-
 }
