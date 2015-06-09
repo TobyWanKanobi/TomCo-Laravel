@@ -177,7 +177,7 @@
                         </ul>
                     </li>
 					<li>
-						<a href="#"><i class="fa fa-fw fa-sitemap"></i> Bestellingen</a>
+						<a href="{{ URL::route('bestelling_beheer') }}"><i class="fa fa-fw fa-sitemap"></i> Bestellingen</a>
 					</li>
 					<li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#categorieen"><i class="fa fa-fw fa-archive"></i> Categorie&euml;n <i class="fa fa-fw fa-caret-down"></i></a>

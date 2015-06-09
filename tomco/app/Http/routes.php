@@ -50,6 +50,7 @@ Route::any('categorie/{naam}', [
 */
 Route::get('admin', ['as' => 'dashboard', 'uses' => 'AdminController@index']);
 Route::get('admin/categorie/beheer', ['as' => 'categorie_beheer', 'uses' => 'CategorieController@overzicht']);
+Route::get('admin/bestelling/beheer', ['as' => 'bestelling_beheer', 'uses' => 'BestellingController@overzicht']);
 
 Route::get('admin/producten', ['as' => 'products', 'uses' => 'ProductController@index']);
 Route::get('admin/product/nieuw', ['as' => 'create_product', 'uses' => 'ProductController@getCreate']);
@@ -63,6 +64,10 @@ Route::post('admin/categorie/nieuw', ['as' => 'store_categorie', 'uses' => 'Cate
 Route::get('admin/categorie/wijzig/{id}', ['as' => 'edit_categorie', 'uses' => 'CategorieController@getEdit']);
 Route::post('admin/categorie/wijzig', ['as' => 'save_categorie', 'uses' => 'CategorieController@wijzigen']);
 Route::delete('admin/categorie/verwijder/{id}', ['as' => 'delete_categorie', 'uses' => 'CategorieController@verwijderen']);
+
+Route::get('admin/bestelling/wijzig/{id}', ['as' => 'edit_bestelling', 'uses' => 'BestellingController@getEdit']);
+Route::post('admin/bestelling/wijzig', ['as' => 'save_bestelling', 'uses' => 'BestellingController@wijzigen']);
+Route::delete('admin/bestelling/verwijder/{id}', ['as' => 'delete_bestelling', 'uses' => 'BestellingController@verwijderen']);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
