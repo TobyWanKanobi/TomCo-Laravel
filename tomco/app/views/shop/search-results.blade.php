@@ -13,11 +13,15 @@
 	<tbody>
 	@foreach($products as $product)
 		<tr>
-			<td>{!! $product->afbeelding_klein !!}</td>
+			<td>
+				<img src="{{ URL::asset('assets/images/artikelen/' . $product->afbeelding_klein) }}" class="img-responsive img-thumbnail" alt="title" style="width:200px; height:200px;" />
+			</td>
 			<td>{!! $product->naam !!}</td>
 			<td>{!! $product->prijs !!}</td>
 			<td>{!! $product->omschrijving_kort !!}</td>
-			<td><span class="glyphicon glyphicon-shopping-cart"></span> Toevoegen</td>
+			<td>
+				<a href="{{ URL::route('add_to_cart', ['id' => $product->product_id, 'quantity' => 1]) }}" class="btn btn-success add-to-cart">Bestellen</a>
+			</td>
 		</tr>
 	@endforeach
 	</tbody>

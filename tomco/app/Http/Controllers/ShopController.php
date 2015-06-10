@@ -4,6 +4,8 @@ use Illuminate\Database\Eloquent\Model;
 use TomCo\models\Product;
 use TomCo\models\Categorie;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 
 class ShopController extends Controller {
 
@@ -51,30 +53,70 @@ class ShopController extends Controller {
 		return redirect()->back();
 	}
 	
-	/**
-	 * Show the application welcome screen to the user.
-	 *
-	 * @return Response
-	 */
-	public function product()
+	public function shoppingCart()
 	{
-	//	$products = Product::all();
-	//	$categories = Categorie::wherenull('parent_id')->with('subCategorien')->get();
+		$products = Session::get('shopping_cart');
+		if($products == null) {
+			$products = [];
+		}
 		
-		//return view('pages.browse-products', ['categorien' => $categories, 'products' => $categories->products()->get()]);
-		return "Hello World";
+		return view('shop.shopping-cart', ['products' => $products]);
 	}
 	
-	/**
-	 * Show the application welcome screen to the user.
-	 *
-	 * @return Response
-	 */
-	/*public function product()
+	public function addToCart(Request $request)
 	{
-		$products = Product::all();
+		$this->validate($request, ['id' => 'required|integer', 'quantity' => 'required|integer']);
 		
-		return view('pages.product-detail', ['products' => $products]);
-	}*/
-
+		$id = $request->input('id');
+		$quantity = $request->input('quantity');
+		$product = Product::find($id);
+		
+		if($product != null) {
+			
+			$item = [
+				'id' => $product->product_id,
+				'name' => $product->naam,
+				'description' => $product->omschrijving_kort,
+				'price' => $product->prijs,
+				'image' => $product->afbeelding_klein,
+				'quantity' => $quantity,
+			];
+			
+			$cart = Session::get('shopping_cart');
+			
+			if($cart == null) {
+				$cart = [];
+			}
+			
+			if(array_key_exists($product->product_id, $cart)) {
+				$cart[$product->product_id] = $item;
+				//replace
+			
+			} else {
+				$cart[(string)$product->product_id] = $item;
+				//add
+			}
+		
+			Session::put('shopping_cart', $cart);
+			
+		}
+		
+		return redirect()->route('shopping_cart');
+	}
+	
+	public function removeFromCart($id)
+	{
+		$cart = Session::get('shopping_cart');
+		if($cart) {
+			
+			if(array_key_exists($id, $cart)) {
+				unset($cart[$id]);
+				Session::put('shopping_cart', $cart);
+			}
+			
+		}
+		
+		return redirect()->route('shopping_cart');
+	}
+	
 }
