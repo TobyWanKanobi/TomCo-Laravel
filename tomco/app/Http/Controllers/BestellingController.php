@@ -28,25 +28,6 @@ class BestellingController extends Controller {
 	{
 		//$this->middleware('auth');
 	}
-
-	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
-	 */
-	public function index($bestelling_id = NULL)
-	{
-		$bestellingen = Bestelling::wherenull('bestelling_id')->get();
-		
-		if(isset($bestelling_id)) {
-			$bestelling = Bestelling::where('bestelling_id', $bestelling_id)->first(); // Vul één Categorie model op basis van categorienaam
-			/*$producten = $categorie->products()->get();*/
-		} else {
-			$producten = Product::all();
-		}
-		
-		return view('pages.browse-products', ['bestellingen' => $bestellingen, 'producten' => $producten]);
-	}
 	
 	public function overzicht()
 	{
@@ -73,10 +54,17 @@ class BestellingController extends Controller {
 	public function wijzigen(BestellingFormRequest $request)
 	{
 		$bestelling = Bestelling::find($request->input('bestelling_id'));
+		$bestellingen = BestellingTest::find($request->input('bestelling_id'));
 		
 		$bestelling->product_id = $request->input('product_id');
 		$bestelling->aantal = $request->input('aantal');
 		$bestelling->subtotaal = $request->input('subtotaal');
+		$bestellingen->afleveradres_straat = $request->input('afleveradres_straat');
+		$bestellingen->afleveradres_nummer = $request->input('afleveradres_nummer');
+		$bestellingen->afleveradres_toevoeging = $request->input('afleveradres_toevoeging');
+		$bestellingen->afleveradres_postcode = $request->input('afleveradres_postcode');
+		$bestellingen->afleveradres_woonplaats = $request->input('afleveradres_woonplaats');
+		
 		
 		$categorie->save();
 		

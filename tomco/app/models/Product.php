@@ -17,4 +17,8 @@ class Product extends Model {
 		'afbeelding_klein',
 		'afbeelding_groot'];
 
+	public function bestelling()
+	{
+		return $this->belongsToMany('Bestelling');
+	}
 }

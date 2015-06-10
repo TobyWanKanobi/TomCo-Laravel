@@ -13,12 +13,19 @@
 			
 			
 				<table class="table table-striped">
+					
 					<thead>
 					<tr>
 						<th>ID</th>
 						<th>Product ID</th>
+						<th>Product Naam</th>
 						<th>Aantal</th>
 						<th>Subtotaal</th>
+						<th>Afleveradres</th>
+						<th>Afleveradres Nummer</th>
+						<th>Toevoeging</th>
+						<th>Postcode</th>
+						<th>Woonplaats</th>
 					</tr>
 					</thead>
 					<tbody>
@@ -26,8 +33,14 @@
 						<tr>
 							<td>{{ $bestelling->bestelling_id }}</td>
 							<td>{{ $bestelling->product_id }}</td>
+							<td>{{ $bestelling->getProduct() }}</td>
 							<td>{{ $bestelling->aantal }}</td>
 							<td>{{ $bestelling->subtotaal }}</td>
+							<td>{{ $bestelling->getStreet() }}</td>
+							<td>{{ $bestelling->getNumber() }}</td>
+							<td>{{ $bestelling->getExtra() }}</td>
+							<td>{{ $bestelling->getZipCode() }}</td>
+							<td>{{ $bestelling->getResidence() }}</td>
 							<td>
 								<button class="btn btn-success" data-bestellingid="{{ $bestelling->bestelling_id }}"><i class="glyphicon glyphicon-pencil"></i> Wijzigen</button> 
 								
