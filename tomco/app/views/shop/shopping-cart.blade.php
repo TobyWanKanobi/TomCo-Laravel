@@ -15,55 +15,45 @@
 	<tbody>
 	@foreach($products as $product)
 		<tr>
-			<td><img src="{!! URL::asset('assets/images/artikelen/' . $product['image']) !!}" alt="{!! $product['name'] !!}" /></td>
+			<td style="width:15%;"><img src="{!! URL::asset('assets/images/artikelen/' . $product['image']) !!}" style="width: 70%; height: 70%;" alt="{!! $product['name'] !!}" /></td>
 			<td>{!! $product['name'] !!}</td>
 			<td>{!! $product['price'] !!}</td>
 			<td>{!! $product['description'] !!}</td>
 			<td style="width: 10%;">
-			<form>
-				<div class="form-group">
-					<input type="text" class="form-control" name="" value="{!! $product['quantity'] !!}" />
-				</div>
-				
-			</form>
+				<button class="btn btn-primary" data-toggle="popover" data-placement="bottom" title="Aantal aanpassen" data-content='<form><input type="text" value="{!! $product["quantity"]!!}" />
+				<button class="btn btn-primary edit-quantity" data-productid="{!! $product["id"] !!}">Opslaan</button></form>'>{!! $product['quantity'] !!}</button>
 			</td>
 			<td>&euro; {!! $product['price'] * $product['quantity'] !!}</td>
 			<td><a href="{{ URL::route('remove_from_cart', ['id' => $product['id']]) }}" class="delete-item">Verwijder</a></td>
 		</tr>
 	@endforeach
-	@if (count($products) == 0)
 		<tr>
-			<td colspan="8">Winkelwagen bevat geen producten</td>
+			<td colspan="8">
+				@if (count($products) == 0)
+					Winkelwagen bevat geen producten
+				@else
+					<button class="btn btn-primary pull-right"><span class="glyphicon glyphicon-shopping-cart"></span> Betalen</button>
+				@endif
+			</td>
 		</tr>
-	@endif
 	</tbody>
-	@if (count($products) > 0)
-	<tfoot>
-		<tr>
-			<td colspan="8"><button class="btn btn-primary pull-right"><span class="glyphicon glyphicon-shopping-cart"></span> Betalen</button></td>
-		</tr>
-	</tfoot>
-	@endif
 </table>
 <script type="text/javascript">
 $(document).ready(function(){
-	/*$('.delete-item').on('click', function(event){
+
+	var baseUrl = '{!! URL::to('/') !!}';
+	
+	$('[data-toggle="popover"]').popover({
+		html : true,
+	});
+	
+	$('table tbody').on('click', '.edit-quantity', function(event){
 		event.preventDefault();
-		console.log('dsfsdf');
-		
-		$.ajax({
-			url : $(this).attr('href'),
-			complete : function(response){
-				console.log('Success: delete item from shoppingcart');
-				$(event.target).closest('tr').remove();
-				
-			},
-			error : function(response){
-				console.log('Failed: delete item from shoppingcart');
-			},
-		});
-		
-	});*/
+		var productId = $(this).data('productid');
+		var quantity = $(this).siblings('input').first().val();
+		var url = baseUrl + '/winkelwagen/add?id=' + productId + '&quantity=' + quantity;
+		window.location.href = url;
+	});
 });
 </script>
 @stop

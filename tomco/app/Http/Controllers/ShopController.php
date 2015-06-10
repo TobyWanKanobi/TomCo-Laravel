@@ -5,6 +5,7 @@ use TomCo\models\Product;
 use TomCo\models\Categorie;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 
 class ShopController extends Controller {
 
@@ -56,14 +57,18 @@ class ShopController extends Controller {
 	{
 		$products = Session::get('shopping_cart');
 		if($products == null) {
-			$items = [];
+			$products = [];
 		}
 		
 		return view('shop.shopping-cart', ['products' => $products]);
 	}
 	
-	public function addToCart($id, $quantity)
+	public function addToCart(Request $request)
 	{
+		$this->validate($request, ['id' => 'required|integer', 'quantity' => 'required|integer']);
+		
+		$id = $request->input('id');
+		$quantity = $request->input('quantity');
 		$product = Product::find($id);
 		
 		if($product != null) {
@@ -93,7 +98,6 @@ class ShopController extends Controller {
 			}
 		
 			Session::put('shopping_cart', $cart);
-			var_dump(Session::get('shopping_cart'));
 			
 		}
 		

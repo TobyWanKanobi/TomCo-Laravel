@@ -68,8 +68,10 @@ $(document).ready(function(){
 		
 		var settings = {
 			url : url,
-			data: {},
-			type: 'get',
+			data: {
+				'_token' : '{{ csrf_token() }}'
+				},
+			type: 'post',
 			complete : function(response){
 			},
 			error : function(response){
