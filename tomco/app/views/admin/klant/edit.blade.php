@@ -9,16 +9,16 @@
 			
 			<div class="modal-body">
 				<div stype="padding:10px;">
-				{!! Form::model($bestelling, ['route' => 'save_bestelling', 'id' => 'edit-bestelling-form']) !!} 
+				{!! Form::model($klant, ['route' => 'save_klant', 'id' => 'edit-klant-form']) !!} 
 					
-					@include('admin/bestelling/partials/_bestelling-form', ['bestelling' => $bestelling, 'submit_tekst' => 'bestelling toevoegen'])
+					@include('admin/klant/partials/_klant-form', ['klant' => $klant, 'submit_tekst' => 'klant toevoegen'])
 					
 				{!! Form::close() !!}
 				</div>
 			</div>
 			
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" id="save-bestelling">Opslaan</button>
+				<button type="button" class="btn btn-default" id="save-klant">Opslaan</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Annuleer</button>
 			</div>
 		</div>
@@ -30,14 +30,14 @@
 		// Remove existing submit button from form
 		$('#edit-modal :submit').remove();
 		
-		$('#save-bestelling').click(function(){
+		$('#save-klant').click(function(){
 			
 			$.ajax({
-				url : '{!! URL::route('save_bestelling'); !!}',
+				url : '{!! URL::route('save_klant'); !!}',
 				type: 'post',
-				data : $('#edit-bestelling-form').serialize(),
+				data : $('#edit-klant-form').serialize(),
 				success : function(result){
-					window.location.replace("{!! URL::route('bestelling_beheer'); !!}");
+					window.location.replace("{!! URL::route('klant'); !!}");
 				},
 				error: function(result) {
 					
@@ -54,7 +54,7 @@
 						});
 						errorsHtml += '</ul></div>';
 						
-						$( '#edit-bestelling-form' ).append( errorsHtml );
+						$( '#edit-klant-form' ).append( errorsHtml );
 					}
 				}
 			});

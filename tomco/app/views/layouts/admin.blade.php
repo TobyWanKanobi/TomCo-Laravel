@@ -191,7 +191,7 @@
                         </ul>
                     </li>
 					<li>
-						<a href="#"><i class="fa fa-fw fa-group"></i> Gebruikers</a>
+						 <a href="{{ URL::route('klant') }}"><i class="fa fa-fw fa-group"></i> Klant</a>
 					</li>
                 </ul>
             </div>
