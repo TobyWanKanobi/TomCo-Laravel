@@ -35,6 +35,9 @@ Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@logout'])
 
 Route::get('zoeken', ['as' => 'search', 'uses' => 'ShopController@search']);
 
+//more information
+Route::get('meerinformatie/{id}', ['as' => 'more_information', 'uses' => 'MoreInfoController@getMoreInformation']);
+
 //Shoppingcart
 Route::get('winkelwagen', ['as' => 'shopping_cart', 'uses' => 'ShopController@shoppingCart']);
 //Route::get('winkelwagen/add/{id}/{quantity}', ['as' => 'add_to_cart', 'uses' => 'ShopController@addToCart']);
