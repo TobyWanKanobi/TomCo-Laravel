@@ -1,8 +1,9 @@
 <?php namespace TomCo\Http\Controllers;
 
-use TomCo\Http\Requests\CategorieFormRequest;
+use TomCo\Http\Requests\BestellingFormRequest;
 use TomCo\models\Product;
 use TomCo\models\Bestelling;
+use TomCo\models\BestellingTest;
 use Input;
 use Redirect;
 
@@ -66,7 +67,8 @@ class BestellingController extends Controller {
 		$bestellingen->afleveradres_woonplaats = $request->input('afleveradres_woonplaats');
 		
 		
-		$categorie->save();
+		$bestelling->save();
+		$bestellingen->save();
 		
 		return redirect()->route('bestelling_beheer');
 	}
