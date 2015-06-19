@@ -45,4 +45,9 @@
 	{!! Form::text('afleveradres_woonplaats', $bestelling->getResidence(), ['class' => 'form-control']) !!}
 </div>
 
+<div class="form-group">
+	{!! Form::label('status_type', 'Status') !!}
+	{!! Form::text('status_type', $bestelling->getStatus(), ['class' => 'form-control']) !!}
+</div>
+
 {!! Form::submit($submit_tekst, ['class' => 'btn btn-default']) !!}

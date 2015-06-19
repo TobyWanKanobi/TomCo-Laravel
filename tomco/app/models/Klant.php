@@ -16,5 +16,7 @@ class Klant extends Model {
 		'adres_nummer',
 		'adres_toevoeging',
 		'postcode',
-		'woonplaats'];
+		'woonplaats',
+		'telefoonnummer',
+		'mobielnummer'];
 }

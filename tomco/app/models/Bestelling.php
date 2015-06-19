@@ -39,4 +39,14 @@ class Bestelling extends Model {
 	{
 		return BestellingTest::where('bestelling_id', $this->bestelling_id)->first()->afleveradres_woonplaats;
 	}
+	
+	public function getOrderDate()
+	{
+		return BestellingTest::where('bestelling_id', $this->bestelling_id)->first()->besteld_op;
+	}
+	
+	public function getStatus()
+	{
+		return Status::where('type', $this->type)->first()->type;
+	}
 }

@@ -40,4 +40,14 @@
 	{!! Form::text('woonplaats', $klant->woonplaats, ['class' => 'form-control']) !!}
 </div>
 
+<div class="form-group">
+	{!! Form::label('telefoonnummer', 'Telefoonnummer') !!}
+	{!! Form::text('telefoonnummer', $klant->telefoonnummer, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+	{!! Form::label('mobielnummer', 'Mobielnummer') !!}
+	{!! Form::text('mobielnummer', $klant->mobielnummer, ['class' => 'form-control']) !!}
+</div>
+
 {!! Form::submit($submit_tekst, ['class' => 'btn btn-default']) !!}

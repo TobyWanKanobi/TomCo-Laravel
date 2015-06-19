@@ -51,7 +51,7 @@ function generateCategories($categorien) {
 				
 				<p>&euro; {{ $product->prijs }}</p>
 				<a href="{{ URL::route('add_to_cart', ['id' => $product->product_id, 'quantity' => 1]) }}" class="btn btn-success add-to-cart">Bestellen</a>
-				<a href="{{ URL::route('more_information, ['id' => $product->product_id]' }}" class="btn btn-primary">Meer info</a>
+				<a href="#" class="btn btn-primary">Meer info</a>
 			</div>
 		
 		@endforeach

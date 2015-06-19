@@ -45,6 +45,8 @@ class KlantController extends Controller {
 		$klant->adres_toevoeging = $request->input('adres_toevoeging');
 		$klant->postcode = $request->input('postcode');
 		$klant->woonplaats = $request->input('woonplaats');
+		$klant->telefoonnummer = $request->input('telefoonnummer');
+		$klant->mobielnummer = $request->input('mobielnummer');
 		
 		$klant->save();
 		

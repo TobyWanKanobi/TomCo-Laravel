@@ -11,7 +11,7 @@
 			<div class="container-fluid">
 			
 			
-				<table class="table table-striped">
+				<table class="table table-striped" style="max-width:200%; width:110%;">
 					<tr>
 						<th>Voornaam</th>
 						<th>Tussenvoegsel</th>
@@ -21,6 +21,8 @@
 						<th>Toevoeging</th>
 						<th>Postcode</th>
 						<th>Woonplaats</th>
+						<th>Telefoonnummer</th>
+						<th>Mobielnummer</th>
 						<th>Acties</th>
 					</tr>
 					@foreach($klanten as $klant)
@@ -33,6 +35,8 @@
 							<td>{{ $klant->adres_toevoeging }}</td>
 							<td>{{ $klant->postcode }}</td>
 							<td>{{ $klant->woonplaats }}</td>
+							<td>{{ $klant->telefoonnummer }}</td>
+							<td>{{ $klant->mobielnummer }}</td>
 							<td>
 								<button class="btn btn-success" data-klantid="{{ $klant->klant_id }}"><i class="glyphicon glyphicon-pencil"></i> Wijzigen</button> 
 								

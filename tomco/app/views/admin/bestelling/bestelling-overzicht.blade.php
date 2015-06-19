@@ -12,7 +12,7 @@
 			<div class="container-fluid">
 			
 			
-				<table class="table table-striped">
+				<table class="table table-striped" style="max-width:200%; width:105%;">
 					
 					<thead>
 					<tr>
@@ -22,10 +22,12 @@
 						<th>Aantal</th>
 						<th>Subtotaal</th>
 						<th>Afleveradres</th>
-						<th>Afleveradres Nummer</th>
+						<th>Huisummer</th>
 						<th>Toevoeging</th>
 						<th>Postcode</th>
 						<th>Woonplaats</th>
+						<th>Besteld op</th>
+						<th>Status</th>
 					</tr>
 					</thead>
 					<tbody>
@@ -41,6 +43,8 @@
 							<td>{{ $bestelling->getExtra() }}</td>
 							<td>{{ $bestelling->getZipCode() }}</td>
 							<td>{{ $bestelling->getResidence() }}</td>
+							<td style="width:150px;">{{ $bestelling->getOrderDate() }}</td>
+							<td>{{ $bestelling->status_type }}</td>
 							<td>
 								<button class="btn btn-success" data-bestellingid="{{ $bestelling->bestelling_id }}"><i class="glyphicon glyphicon-pencil"></i> Wijzigen</button> 
 								

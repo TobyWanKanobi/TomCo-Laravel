@@ -8,7 +8,7 @@ class BestellingTest extends Model {
 	public $timestamps = false;
 	protected $primaryKey = 'bestelling_id';
 	
-	public $fillable = ['afleveradres_straat', 'afleveradres_nummer', 'afleveradres_toevoeging', 'afleveradres_postcode', 'afleveradres_woonplaats'];
+	public $fillable = ['afleveradres_straat', 'afleveradres_nummer', 'afleveradres_toevoeging', 'afleveradres_postcode', 'afleveradres_woonplaats', 'besteld_op', 'status_type'];
 	
 	public function bestelling()
 	{

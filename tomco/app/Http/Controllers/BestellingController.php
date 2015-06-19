@@ -3,6 +3,7 @@
 use TomCo\Http\Requests\BestellingFormRequest;
 use TomCo\models\Product;
 use TomCo\models\Bestelling;
+use TomCo\models\Status;
 use TomCo\models\BestellingTest;
 use Input;
 use Redirect;
@@ -47,9 +48,10 @@ class BestellingController extends Controller {
 	
 	public function getEdit($id)
 	{
-		$cats = Bestelling::find($id);
+		$bestelling = Bestelling::find($id);
+		$status = Status::lists('type');
 		
-		return view('admin.bestelling.edit', ['bestelling' => $cats]);
+		return view('admin.bestelling.edit', ['bestelling' => $bestelling, 'status' => $status]);
 	}
 	
 	public function wijzigen(BestellingFormRequest $request)
@@ -65,6 +67,7 @@ class BestellingController extends Controller {
 		$bestellingen->afleveradres_toevoeging = $request->input('afleveradres_toevoeging');
 		$bestellingen->afleveradres_postcode = $request->input('afleveradres_postcode');
 		$bestellingen->afleveradres_woonplaats = $request->input('afleveradres_woonplaats');
+		$bestellingen->status_type = $request->input('status_type');
 		
 		
 		$bestelling->save();
