@@ -42,6 +42,18 @@
 					<li><a href="{{ URL::to('producten') }}">Producten</a></li>
 					<li><a href="{{ URL::to('over-ons') }}">Over Ons</a></li>
 					<li><a href="{{ URL::to('contact') }}">Contact</a></li>
+					@if(Auth::check()) 
+	
+					@if(Auth::user()->rol == 'admin')
+
+						<li><a href="{{ URL::to('admin') }}">Admin</a></li>
+						
+					@else
+						
+					@endif
+					@else
+						
+					@endif
 				</ul>
 				
 				<div class="col-sm-3 col-md-3 pull-right">
