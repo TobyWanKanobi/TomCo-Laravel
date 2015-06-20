@@ -10,6 +10,6 @@ class Status extends Model {
 	
 	public function bestelling()
 	{
-		return $this->belongsToMany('Bestelling');
+		return $this->belongsToMany('BestellingTest');
 	}
 }

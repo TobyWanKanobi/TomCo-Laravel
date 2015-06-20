@@ -45,8 +45,8 @@ class Bestelling extends Model {
 		return BestellingTest::where('bestelling_id', $this->bestelling_id)->first()->besteld_op;
 	}
 	
-	public function getStatus()
+	public function getStatusOrder()
 	{
-		return Status::where('type', $this->type)->first()->type;
+		return BestellingTest::where('bestelling_id', $this->bestelling_id)->first()->status_type;
 	}
 }

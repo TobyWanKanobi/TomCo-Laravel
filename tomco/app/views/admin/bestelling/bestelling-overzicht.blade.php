@@ -12,7 +12,7 @@
 			<div class="container-fluid">
 			
 			
-				<table class="table table-striped" style="max-width:200%; width:105%;">
+				<table class="table table-striped" style="max-width:200%; width:110%;">
 					
 					<thead>
 					<tr>
@@ -44,7 +44,7 @@
 							<td>{{ $bestelling->getZipCode() }}</td>
 							<td>{{ $bestelling->getResidence() }}</td>
 							<td style="width:150px;">{{ $bestelling->getOrderDate() }}</td>
-							<td>{{ $bestelling->status_type }}</td>
+							<td>{{ $bestelling->getStatusOrder() }}</td>
 							<td>
 								<button class="btn btn-success" data-bestellingid="{{ $bestelling->bestelling_id }}"><i class="glyphicon glyphicon-pencil"></i> Wijzigen</button> 
 								

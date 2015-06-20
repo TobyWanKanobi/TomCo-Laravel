@@ -1,3 +1,7 @@
+@if(Auth::check()) 
+	
+@if(Auth::user()->rol == 'admin')
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -234,3 +238,9 @@
 	
 </body>
 </html>
+@else
+	Dit pagina is niet beschikbaar voor u! Klik hier om terug te gaan naar <a href="{{ URL::to('URL') }}">Homepage</a>
+@endif
+@else
+	Dit pagina is niet beschikbaar voor u! Klik hier om terug te gaan naar <a href="{{ URL::to('URL') }}">Homepage</a>
+@endif
