@@ -64,139 +64,103 @@
 		<!-- Top Menu Items -->
 		<ul class="nav navbar-right top-nav">
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-				<ul class="dropdown-menu message-dropdown">
-					<li class="message-preview">
-						<a href="#">
-							<div class="media">
-								<span class="pull-left">
-									<img class="media-object" src="http://placehold.it/50x50" alt="">
-								</span>
-								<div class="media-body">
-									<h5 class="media-heading"><strong>Admin</strong></h5>
-									<p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-									<p>Lorem ipsum dolor sit amet, consectetur...</p>
-								</div>
-							</div>
-						</a>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
 					</li>
-					
-					<li class="message-preview">
-						<a href="#">
-							<div class="media">
-								<span class="pull-left">
-									<img class="media-object" src="http://placehold.it/50x50" alt="">
-								</span>
-								<div class="media-body">
-									<h5 class="media-heading"><strong>Admin</strong></h5>
-									<p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-									<p>Lorem ipsum dolor sit amet, consectetur...</p>
-								</div>
-							</div>
-						</a>
+					<li>
+						<a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
 					</li>
-					
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>Admin</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+					<li>
+						<a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="{{ URL::to('logout') }}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
 			
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="http://localhost/TomCo-Laravel/tomco/public/admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                    </li>
-					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#producten"><i class="fa fa-fw fa-archive"></i> Producten <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="producten" class="collapse">
-                            <li>
-                                <a href="{{ URL::route('products') }}"><i class="fa fa-fw fa-sitemap"></i>Overzicht</a>
-                            </li>
-							<li>
-                                <a href="{{ URL::route('create_product') }}"><i class="fa fa-fw fa-plus"></i>Nieuw product</a>
-                            </li>
-                        </ul>
-                    </li>
-					<li>
-						<a href="{{ URL::route('bestelling_beheer') }}"><i class="fa fa-fw fa-sitemap"></i> Bestellingen</a>
-					</li>
-					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#categorieen"><i class="fa fa-fw fa-archive"></i> Categorie&euml;n <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="categorieen" class="collapse">
-                            <li>
-                                <a href="{{ URL::route('categorie_beheer') }}"><i class="fa fa-fw fa-sitemap"></i>Overzicht</a>
-                            </li>
-							<li>
-                                <a href="{{ URL::route('create_categorie') }}"><i class="fa fa-fw fa-plus"></i>Nieuwe Categorie</a>
-                            </li>
-                        </ul>
-                    </li>
-					<li>
-						 <a href="{{ URL::route('klant') }}"><i class="fa fa-fw fa-group"></i> Klant</a>
-					</li>
+					@if(Request::path() === 'admin')
+						<li class="active">
+							<a href="{{ URL::to('admin') }}"><i class="fa fa-fw fa-dashboard"></i>Dashboard <span class="sr-only">(current)</span></a>
+						</li>
+					@else
+						<li><a href="{{ URL::to('admin') }}"><i class="fa fa-fw fa-dashboard"></i>Dashboard </a></li>
+					@endif
+					@if(Request::path() === 'admin/producten' || Request::path() === 'admin/producten')
+						<li class="active">
+							<a href="javascript:;" data-toggle="collapse" data-target="#producten"><i class="fa fa-fw fa-archive"></i> Producten<span class="sr-only">(current)</span> <i class="fa fa-fw fa-caret-down"></i></a>
+							<ul id="producten" class="collapse">
+								<li class="active">
+									<a href="{{ URL::route('products') }}"><i class="fa fa-fw fa-sitemap"></i>Overzicht <span class="sr-only">(current)</span></a>
+								</li>
+								<li>
+									<a href="{{ URL::route('create_product') }}"><i class="fa fa-fw fa-plus"></i>Nieuw product</a>
+								</li>
+							</ul>
+						</li>
+					@else
+						<li>
+							<a href="javascript:;" data-toggle="collapse" data-target="#producten"><i class="fa fa-fw fa-archive"></i> Producten <i class="fa fa-fw fa-caret-down"></i></a>
+							<ul id="producten" class="collapse">
+								<li class="active">
+									<a href="{{ URL::route('products') }}"><i class="fa fa-fw fa-sitemap"></i>Overzicht</a>
+								</li>
+								<li>
+									<a href="{{ URL::route('create_product') }}"><i class="fa fa-fw fa-plus"></i>Nieuw product</a>
+								</li>
+							</ul>
+						</li>
+					@endif
+					@if(Request::path() === 'admin/bestelling/beheer')
+						<li class="active">
+							<a href="{{ URL::route('bestelling_beheer') }}"><i class="fa fa-fw fa-sitemap"></i> Bestellingen<span class="sr-only">(current)</span></a>
+						</li>
+					@else
+						<li>
+							<a href="{{ URL::route('bestelling_beheer') }}"><i class="fa fa-fw fa-sitemap"></i> Bestellingen</a>
+						</li>
+					@endif
+					@if(Request::path() === 'admin/categorie/beheer' || Request::path() === 'admin/categorie/nieuw')
+						<li class="active">
+							<a href="javascript:;" data-toggle="collapse" data-target="#categorieen"><i class="fa fa-fw fa-archive"></i> Categorie&euml;n <span class="sr-only">(current)</span><i class="fa fa-fw fa-caret-down"></i></a>
+							<ul id="categorieen" class="collapse">
+								<li>
+									<a href="{{ URL::route('categorie_beheer') }}"><i class="fa fa-fw fa-sitemap"></i>Overzicht</a>
+								</li>
+								<li>
+									<a href="{{ URL::route('create_categorie') }}"><i class="fa fa-fw fa-plus"></i>Nieuwe Categorie</a>
+								</li>
+							</ul>
+						</li>
+					@else
+						<li>
+							<a href="javascript:;" data-toggle="collapse" data-target="#categorieen"><i class="fa fa-fw fa-archive"></i> Categorie&euml;n <i class="fa fa-fw fa-caret-down"></i></a>
+							<ul id="categorieen" class="collapse">
+								<li>
+									<a href="{{ URL::route('categorie_beheer') }}"><i class="fa fa-fw fa-sitemap"></i>Overzicht</a>
+								</li>
+								<li>
+									<a href="{{ URL::route('create_categorie') }}"><i class="fa fa-fw fa-plus"></i>Nieuwe Categorie</a>
+								</li>
+							</ul>
+						</li>
+					@endif
+					@if(Request::path() === 'admin/klant')
+						<li class="active">
+							<a href="{{ URL::route('klant') }}"><i class="fa fa-fw fa-group"></i> Klant<span class="sr-only">(current)</span></a>
+						</li>
+					@else
+						<li>
+							<a href="{{ URL::route('klant') }}"><i class="fa fa-fw fa-group"></i> Klant</a>
+						</li>
+					@endif
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -205,7 +169,6 @@
         <div id="page-wrapper">
 
             <div class="container-fluid">
-
                <!-- Page Heading -->
                <!-- <div class="row">
                     <div class="col-lg-12">

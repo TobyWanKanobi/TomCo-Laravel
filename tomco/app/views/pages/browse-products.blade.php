@@ -51,7 +51,7 @@ function generateCategories($categorien) {
 				
 				<p>&euro; {{ $product->prijs }}</p>
 				<a href="{{ URL::route('add_to_cart', ['id' => $product->product_id, 'quantity' => 1]) }}" class="btn btn-success add-to-cart">Bestellen</a>
-				<a href="#" class="btn btn-primary">Meer info</a>
+				<a href="{{ URL::route('more_information', ['id' => $product->product_id]) }}" class="btn btn-primary more-information">Meer info</a>
 			</div>
 		
 		@endforeach
@@ -60,29 +60,29 @@ function generateCategories($categorien) {
 
 </div>
 <script type="text/javascript">
-$(document).ready(function(){
-	$('.add-to-cart').on('click', function(event){
-		event.preventDefault();
-		var url = $(this).attr('href');
-		console.log(url);
-		
-		var settings = {
-			url : url,
-			data: {
-				'_token' : '{{ csrf_token() }}'
+	$(document).ready(function(){
+		$('.add-to-cart').on('click', function(event){
+			event.preventDefault();
+			var url = $(this).attr('href');
+			console.log(url);
+			
+			var settings = {
+				url : url,
+				data: {
+					'_token' : '{{ csrf_token() }}'
+					},
+				type: 'post',
+				complete : function(response){
 				},
-			type: 'post',
-			complete : function(response){
-			},
-			error : function(response){
-			}
-		};
-		console.log(settings);
-		//$.post(settings);
-		
-		$.ajax(settings);
+				error : function(response){
+				}
+			};
+			console.log(settings);
+			//$.post(settings);
+			
+			$.ajax(settings);
+		});
 	});
-});
 
 </script>
 @stop

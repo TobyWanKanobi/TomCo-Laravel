@@ -45,8 +45,8 @@ function generateCategories($categorien) {
 			<div class="col-sm-6 col-md-4 well text-center">
 				<h2 class="h4">{{ $product->naam }}</h2>
 					<img src="{{ URL::asset('assets/images/artikelen/' . $product->afbeelding_groot) }}" class="img-responsive img-thumbnail" alt="title" style="width:200px; height:200px;" />
-				<p>&euro; {{ $product->omschrijving_kort }}</p>
-				<p>&euro; {{ $product->omschrijving_lang }}</p>
+				<p>{{ $product->omschrijving_kort }}</p>
+				<p>{{ $product->omschrijving_lang }}</p>
 				<p>&euro; {{ $product->prijs }}</p>
 			</div>
 		

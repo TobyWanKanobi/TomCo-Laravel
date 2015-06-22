@@ -46,7 +46,8 @@
 							<td style="width:150px;">{{ $bestelling->getOrderDate() }}</td>
 							<td>{{ $bestelling->getStatusOrder() }}</td>
 							<td>
-								<button class="btn btn-success" data-bestellingid="{{ $bestelling->bestelling_id }}"><i class="glyphicon glyphicon-pencil"></i> Wijzigen</button> 
+								<input type="hidden" name="getproductId" value="(($bestelling->product_id}}">
+								<button class="btn btn-success" data-productid="{{ $bestelling->product_id }}" data-bestellingid="{{ $bestelling->bestelling_id }}"><i class="glyphicon glyphicon-pencil"></i> Wijzigen</button> 
 								
 								<a class="btn btn-danger" data-toggle="modal" data-target="#bestelling-{{ $bestelling->bestelling_id }}" href="#">
 									<i class="glyphicon glyphicon-trash"></i> Verwijderen
@@ -61,7 +62,7 @@
 										<h4 class="modal-title" id="myModalLabel">Verwijderen</h4>
 									</div>
 									<div class="modal-body">
-										Weet je zeker dat je {{ $bestelling->bestelling_id }} wilt verwijderen?
+										Weet je zeker dat je {{ $bestelling->getProduct() }} wilt verwijderen?
 									</div>
 									<div class="modal-footer">
 										{!! Form::open(['route' => ['delete_bestelling', $bestelling->bestelling_id], 'method' => 'delete']) !!}
@@ -89,7 +90,7 @@
 		$('table').on('click', 'td button', function(){
 		
 			$.ajax({
-				url : '{!! URL::to('/admin/bestelling/wijzig') !!}' + '/' + $(this).data('bestellingid'),
+				url : '{!! URL::to('/admin/bestelling/wijzig') !!}' + '/' + $(this).data('bestellingid') + '/' + $(this).data('productid'),
 				success: function(result) {
 					$('#edit-modal').remove();
 					$('body').append(result);

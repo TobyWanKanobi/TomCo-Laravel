@@ -21,9 +21,9 @@ class MoreInfoController extends Controller {
 	
 	public function getMoreInformation($id)
 	{
-		$products = Product::find($id);
+		$producten = Product::find($id);
 		
-		return view('admin.moreinformation', ['products' => $products]);
+		return view('pages.moreinformation', ['producten' => $producten]);
 	}
 	
 }

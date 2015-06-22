@@ -49,6 +49,20 @@ class CategorieController extends Controller {
 		return view('pages.browse-products', ['categorieen' => $categorieen, 'producten' => $producten]);
 	}
 	
+	public function start($naam = NULL)
+	{
+		$categorieen = Categorie::wherenull('parent_id')->with('subCategorien')->get();
+		
+		if(isset($naam)) {
+			$categorie = Categorie::where('naam', $naam)->first(); // Vul één Categorie model op basis van categorienaam
+			$producten = $categorie->products()->get();
+		} else {
+			$producten = Product::all();
+		}
+		
+		return view('pages.moreinformation', ['categorieen' => $categorieen, 'producten' => $producten]);
+	}
+	
 	public function overzicht()
 	{
 		$cats = Categorie::all();

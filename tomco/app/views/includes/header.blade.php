@@ -18,8 +18,7 @@
 		
 		</div>	
 		
-	</div>
-	
+	</div>	
 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
@@ -32,16 +31,32 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="{{ URL::to("/") }}">Tomco</a>
+				<a class="navbar-brand" href="{{ URL::to('home') }}">Tomco</a>
 			</div>
 			
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="{{ URL::to("/") }}">Home <span class="sr-only">(current)</span></a></li>
-					<li><a href="{{ URL::to('producten') }}">Producten</a></li>
-					<li><a href="{{ URL::to('over-ons') }}">Over Ons</a></li>
-					<li><a href="{{ URL::to('contact') }}">Contact</a></li>
+					@if(Request::path() === 'home' || Request::path() === '/')
+						<li class="active"><a href="{{ URL::to('home') }}">Home <span class="sr-only">(current)</span></a></li>
+					@else
+						<li><a href="{{ URL::to('home') }}">Home </a></li>
+					@endif
+					@if(Request::path() === 'producten')
+						<li class="active"><a href="{{ URL::to('producten') }}">Producten <span class="sr-only">(current)</span></a></li>
+					@else
+						<li><a href="{{ URL::to('producten') }}">Producten </a></li>
+					@endif
+					@if(Request::path() === 'over-ons')
+						<li class="active"><a href="{{ URL::to('over-ons') }}">Over Ons <span class="sr-only">(current)</span></a></li>
+					@else
+						<li><a href="{{ URL::to('over-ons') }}">Over Ons </a></li>
+					@endif
+					@if(Request::path() === 'contact')
+						<li class="active"><a href="{{ URL::to('contact') }}">Contact <span class="sr-only">(current)</span></a></li>
+					@else
+						<li><a href="{{ URL::to('contact') }}">Contact </a></li>
+					@endif
 					@if(Auth::check()) 
 	
 					@if(Auth::user()->rol == 'admin')

@@ -46,9 +46,9 @@ class BestellingController extends Controller {
 		return redirect()->route('bestelling_beheer');
 	}
 	
-	public function getEdit($id)
+	public function getEdit($id, $product_id)
 	{
-		$bestelling = Bestelling::find($id);
+		$bestelling = Bestelling::find($id, $product_id);
 		$status = Status::lists('type');
 		
 		return view('admin.bestelling.edit', ['bestelling' => $bestelling, 'status' => $status]);
