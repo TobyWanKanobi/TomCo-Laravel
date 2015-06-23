@@ -50,7 +50,8 @@ class BestellingController extends Controller {
 	
 	public function getInformatieById($id)
 	{
-		$bestellingen = Bestelling::where('bestelling_id', $id)->get();
+		$bestelling = Bestelling::find($id);
+		//$bestellingen = Bestelling::where('bestelling_id', $id)->get();
 		echo $bestellingen;
 
 		$status = Status::lists('type');
