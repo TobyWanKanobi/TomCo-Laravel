@@ -74,9 +74,12 @@ Route::get('admin/categorie/wijzig/{id}', ['as' => 'edit_categorie', 'uses' => '
 Route::post('admin/categorie/wijzig', ['as' => 'save_categorie', 'uses' => 'CategorieController@wijzigen']);
 Route::delete('admin/categorie/verwijder/{id}', ['as' => 'delete_categorie', 'uses' => 'CategorieController@verwijderen']);
 
-Route::get('admin/bestelling/wijzig/{id}/{product_id}', ['as' => 'edit_bestelling', 'uses' => 'BestellingController@getEdit']);
+Route::get('admin/bestelling/overzicht', ['as' => 'bestelling', 'uses' => 'BestellingController@getInformatie']);
+Route::get('admin/bestelling/overzicht/informatie/{id}', ['as' => 'bestelling_informatie', 'uses' => 'BestellingController@getInformatieById']);
+Route::delete('admin/bestelling/overzicht/verwijder/{id}', ['as' => 'delete_bestelling', 'uses' => 'BestellingController@verwijderen']);
+
+Route::get('admin/bestelling/wijzig/{id}', ['as' => 'edit_bestelling', 'uses' => 'BestellingController@getEdit']);
 Route::post('admin/bestelling/wijzig', ['as' => 'save_bestelling', 'uses' => 'BestellingController@wijzigen']);
-Route::delete('admin/bestelling/verwijder/{id}', ['as' => 'delete_bestelling', 'uses' => 'BestellingController@verwijderen']);
 
 Route::get('admin/klant', ['as' => 'klant', 'uses' => 'KlantController@index']);
 Route::get('admin/klant/wijzig/{id}', ['as' => 'edit_klant', 'uses' => 'KlantController@getEdit']);

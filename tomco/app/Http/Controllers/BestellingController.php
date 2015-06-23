@@ -33,22 +33,42 @@ class BestellingController extends Controller {
 	
 	public function overzicht()
 	{
-		$products = Product::all();
 		$bestellingen = Bestelling::all();
 		
-		return view('admin.bestelling.bestelling-overzicht', ['bestellingen' => $bestellingen, 'producten' => $products]);
+		return view('admin.bestelling.bestelling-overzicht', ['bestellingen' => $bestellingen]);
+	}
+	
+	public function getInformatie()
+	{
+		$bestellingens = Bestelling::all();
+		
+		$bestellingen = $bestellingens->merge($bestellingens);
+		
+		
+		return view('admin.bestelling.bestelling', ['bestellingen' => $bestellingen]);
+	}
+	
+	public function getInformatieById($id)
+	{
+		$bestellingen = Bestelling::where('bestelling_id', $id)->get();
+		echo $bestellingen;
+
+		$status = Status::lists('type');
+		
+		return view('admin.bestelling.bestelling_overzicht', ['bestellingen' => $bestellingen, 'status' => $status]);
 	}
 	
 	public function verwijderen($id)
 	{
 		Bestelling::find($id)->delete();
+		BestellingTest::find($id)->delete();
 		
-		return redirect()->route('bestelling_beheer');
+		return redirect()->route('bestelling');
 	}
 	
-	public function getEdit($id, $product_id)
+	public function getEdit($id)
 	{
-		$bestelling = Bestelling::find($id, $product_id);
+		$bestelling = Bestelling::find($id);
 		$status = Status::lists('type');
 		
 		return view('admin.bestelling.edit', ['bestelling' => $bestelling, 'status' => $status]);

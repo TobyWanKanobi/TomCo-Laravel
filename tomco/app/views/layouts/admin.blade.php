@@ -120,6 +120,15 @@
 					@endif
 					@if(Request::path() === 'admin/bestelling/beheer')
 						<li class="active">
+							<a href="{{ URL::route('bestelling') }}"><i class="fa fa-fw fa-sitemap"></i> Bestelling<span class="sr-only">(current)</span></a>
+						</li>
+					@else
+						<li>
+							<a href="{{ URL::route('bestelling') }}"><i class="fa fa-fw fa-sitemap"></i> Bestelling</a>
+						</li>
+					@endif
+					@if(Request::path() === 'admin/bestelling/beheer')
+						<li class="active">
 							<a href="{{ URL::route('bestelling_beheer') }}"><i class="fa fa-fw fa-sitemap"></i> Bestellingen<span class="sr-only">(current)</span></a>
 						</li>
 					@else

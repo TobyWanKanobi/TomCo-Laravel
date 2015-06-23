@@ -1,4 +1,4 @@
-	{!! Form::hidden('bestelling_id', $bestelling->bestelling_id, 'product_id', $bestelling->product_id) !!}
+	{!! Form::hidden('bestelling_id', $bestelling->bestelling_id) !!}
 	
 <div class="form-group">
 	{!! Form::label('product_id', 'Geef product id op') !!}
