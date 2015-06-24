@@ -41,7 +41,7 @@
 					@else
 						<li><a href="{{ URL::to('home') }}">Home </a></li>
 					@endif
-					@if(Request::path() === 'producten')
+					@if(Request::path() === 'producten' || Request::path() === 'meerinformatie')
 						<li class="active"><a href="{{ URL::to('producten') }}">Producten <span class="sr-only">(current)</span></a></li>
 					@else
 						<li><a href="{{ URL::to('producten') }}">Producten </a></li>
