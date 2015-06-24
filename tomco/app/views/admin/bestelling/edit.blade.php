@@ -37,7 +37,7 @@
 				type: 'post',
 				data : $('#edit-bestelling-form').serialize(),
 				success : function(result){
-					window.location.replace("{!! URL::route('bestelling_beheer'); !!}");
+					window.location.replace("{!! URL::route('bestellingen'); !!}");
 				},
 				error: function(result) {
 					
