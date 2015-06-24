@@ -36,7 +36,7 @@ Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@logout'])
 Route::get('zoeken', ['as' => 'search', 'uses' => 'ShopController@search']);
 
 //more information
-Route::get('meerinformatie', ['as' => 'more_information', 'uses' => 'CategorieController@start']);
+Route::get('meerinformatie/{id}', ['as' => 'more_information', 'uses' => 'CategorieController@start']);
 
 //Shoppingcart
 Route::get('kassa', ['as' => 'checkout', 'uses' => 'ShopController@checkout', 'middleware' => 'auth']);
