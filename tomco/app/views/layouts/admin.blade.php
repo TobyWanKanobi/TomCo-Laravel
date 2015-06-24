@@ -93,7 +93,7 @@
 					@else
 						<li><a href="{{ URL::to('admin') }}"><i class="fa fa-fw fa-dashboard"></i>Dashboard </a></li>
 					@endif
-					@if(Request::path() === 'admin/producten' || Request::path() === 'admin/producten')
+					@if(Request::path() === 'admin/producten')
 						<li class="active">
 							<a href="javascript:;" data-toggle="collapse" data-target="#producten"><i class="fa fa-fw fa-archive"></i> Producten<span class="sr-only">(current)</span> <i class="fa fa-fw fa-caret-down"></i></a>
 							<ul id="producten" class="collapse">
@@ -118,9 +118,15 @@
 							</ul>
 						</li>
 					@endif
+					@if(Request::path() === 'admin/bestellingen')
 						<li class="active">
 							<a href="{{ URL::route('bestellingen') }}"><i class="fa fa-file-text"></i> Bestellingen<span class="sr-only">(current)</span></a>
 						</li>
+					@else
+						<li>
+							<a href="{{ URL::route('bestellingen') }}"><i class="fa fa-file-text"></i> Bestellingen</a>
+						</li>
+					@endif
 					@if(Request::path() === 'admin/categorie/beheer' || Request::path() === 'admin/categorie/nieuw')
 						<li class="active">
 							<a href="javascript:;" data-toggle="collapse" data-target="#categorieen"><i class="fa fa-fw fa-sitemap"></i> Categorie&euml;n <span class="sr-only">(current)</span><i class="fa fa-fw fa-caret-down"></i></a>

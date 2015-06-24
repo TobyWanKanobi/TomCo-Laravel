@@ -145,6 +145,11 @@ return [
 		'TomCo\Providers\ConfigServiceProvider',
 		'TomCo\Providers\EventServiceProvider',
 		'TomCo\Providers\RouteServiceProvider',
+		
+		/*
+			Extern service Providers...
+		*/
+		'DaveJamesMiller\Breadcrumbs\ServiceProvider',
 
 	],
 
@@ -195,7 +200,7 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'		=> 'Illuminate\Html\FormFacade',
 		'HTML'		=> 'Illuminate\Html\HtmlFacade',
-
+		'Breadcrumbs' => 'DaveJamesMiller\Breadcrumbs\Facade',
 	],
 
 ];
