@@ -6,6 +6,11 @@
 </div>
 
 <div class="form-group">
+	{!! Form::select('categorie_id', 
+		$categorie_opties, $product->categorie_id, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
 	{!! Form::label('omschrijving_kort', 'Korte beschrijving (max 200)') !!}
 	{!! Form::textarea('omschrijving_kort', $product->omschrijving_kort, ['class' => 'form-control']) !!}
 </div>

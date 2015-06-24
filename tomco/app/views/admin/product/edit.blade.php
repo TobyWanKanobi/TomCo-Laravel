@@ -11,7 +11,7 @@
 				<div stype="padding:10px;">
 				{!! Form::model($product, ['route' => 'save_product', 'id' => 'edit-product-form']) !!} 
 					
-					@include('admin/product/partials/_product-form', ['product' => $product, 'submit_tekst' => 'Product toevoegen'])
+					@include('admin/product/partials/_product-form', ['product' => $product, 'categorie_opties' => $categorie_opties, 'submit_tekst' => 'Product toevoegen'])
 					
 				{!! Form::close() !!}
 				</div>

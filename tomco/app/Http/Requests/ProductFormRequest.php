@@ -22,7 +22,7 @@ class ProductFormRequest extends Request {
 	public function rules()
 	{
 		return [
-			'categorie_id' => '',
+			'categorie_id' => 'required',
 			'naam' => 'required',
 			'prijs' => 'required',
 			'omschrijving_kort' => 'required',

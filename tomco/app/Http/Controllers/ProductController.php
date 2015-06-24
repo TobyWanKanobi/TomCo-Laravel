@@ -2,6 +2,7 @@
 
 use TomCo\Http\Requests\ProductFormRequest;
 use TomCo\models\Product;
+use TomCo\models\Categorie;
 use Input;
 use Redirect;
 use Illuminate\View\View;
@@ -29,8 +30,9 @@ class ProductController extends Controller {
 	{
 		
 		$product = new Product();
+		$categorie_opties = Categorie::lists('naam', 'categorie_id');
 		
-		return view('admin.product.create', ['product' => $product]);
+		return view('admin.product.create', ['product' => $product, 'categorie_opties' => $categorie_opties]);
 	}
 	
 	public function postCreate(ProductFormRequest $request)
@@ -44,8 +46,9 @@ class ProductController extends Controller {
 	{
 		
 		$product = Product::find($id);
+		$categorie_opties = Categorie::lists('naam', 'categorie_id');
 		
-		return view('admin.product.edit', ['product' => $product]);
+		return view('admin.product.edit', ['product' => $product, 'categorie_opties' => $categorie_opties]);
 	}
 
 	public function postEdit(ProductFormRequest $request)
@@ -53,6 +56,7 @@ class ProductController extends Controller {
 		$product = Product::find($request->input('product_id'));
 		
 		$product->naam = $request->input('naam');
+		$product->categorie_id = $request->input('categorie_id');
 		$product->prijs = $request->input('prijs');
 		$product->omschrijving_kort = $request->input('omschrijving_kort');
 		$product->omschrijving_lang = $request->input('omschrijving_lang');

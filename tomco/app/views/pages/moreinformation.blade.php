@@ -45,17 +45,17 @@ function generateCategories($categorien) {
 						
 						<div class="col-md-6">
 							
-							<h2 class="h2">{{ $product->naam }}</h4>
-							<h4>Omschrijving Kort</h4>
-							<p>
-								<br/>
-								{{ $product->omschrijving_kort }}
-							</p>
-							<br/><h4>Omschrijving Lang</h4>
-							<p>
-								<br/>
-								{{ $product->omschrijving_lang }}
-							</p>
+							<div class="col-md-12"><h2 class="h2">{{ $product->naam }}</h4></div>
+							
+							<div class="row">
+							<div class="col-md-4">Categorie</div>
+							<div class="col-md-6">{{  $product->categorie->naam }}</div>
+							</div>
+							
+							<div class="row">
+							<div class="col-md-4">Omschrijving</div>
+							<div class="col-md-6">{{ $product->omschrijving_lang }}</div>
+							</div>
 							
 							<div id="price-box" class="col-md-12 text-right">
 								<span><strong>&euro; {{ $product->prijs }}</strong></span>
