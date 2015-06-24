@@ -35,9 +35,9 @@ Breadcrumbs::register('category', function($breadcrumbs, $category)
 });
 
 // Home > Producten > [Category] > [Page]
-Breadcrumbs::register('more_information', function($breadcrumbs, $more_information) {
+Breadcrumbs::register('more_information', function($breadcrumbs, $product) {
     $breadcrumbs->parent('producten');
-    $breadcrumbs->push($more_information->naam, route('more_information', $more_information->product_id));
+    $breadcrumbs->push($product->naam, route('more_information', $product->product_id));
 });
 
 ?>

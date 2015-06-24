@@ -48,8 +48,8 @@ class BestellingController extends Controller {
 	
 	public function verwijderen($id)
 	{
+		Bestelling::all()->producten()->where('bestelling_id', '=', $id)->delete();
 		Bestelling::find($id)->delete();
-		BestellingTest::find($id)->delete();
 		
 		return redirect()->route('bestelling');
 	}
