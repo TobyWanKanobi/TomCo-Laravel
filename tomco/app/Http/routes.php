@@ -59,7 +59,6 @@ Route::any('categorie/{naam}', [
 */
 Route::get('admin', ['as' => 'dashboard', 'uses' => 'AdminController@index']);
 Route::get('admin/categorie/beheer', ['as' => 'categorie_beheer', 'uses' => 'CategorieController@overzicht']);
-Route::get('admin/bestelling/beheer', ['as' => 'bestelling_beheer', 'uses' => 'BestellingController@overzicht']);
 
 Route::get('admin/producten', ['as' => 'products', 'uses' => 'ProductController@index']);
 Route::get('admin/product/nieuw', ['as' => 'create_product', 'uses' => 'ProductController@getCreate']);
@@ -74,8 +73,8 @@ Route::get('admin/categorie/wijzig/{id}', ['as' => 'edit_categorie', 'uses' => '
 Route::post('admin/categorie/wijzig', ['as' => 'save_categorie', 'uses' => 'CategorieController@wijzigen']);
 Route::delete('admin/categorie/verwijder/{id}', ['as' => 'delete_categorie', 'uses' => 'CategorieController@verwijderen']);
 
-Route::get('admin/bestelling/overzicht', ['as' => 'bestelling', 'uses' => 'BestellingController@getInformatie']);
-Route::get('admin/bestelling/overzicht/informatie/{id}', ['as' => 'bestelling_informatie', 'uses' => 'BestellingController@getInformatieById']);
+Route::get('admin/bestellingen', ['as' => 'bestellingen', 'uses' => 'BestellingController@index']);
+Route::get('admin/bestellingen/{id}', ['as' => 'bestelling', 'uses' => 'BestellingController@getOrder']);;
 Route::delete('admin/bestelling/overzicht/verwijder/{id}', ['as' => 'delete_bestelling', 'uses' => 'BestellingController@verwijderen']);
 
 Route::get('admin/bestelling/wijzig/{id}', ['as' => 'edit_bestelling', 'uses' => 'BestellingController@getEdit']);

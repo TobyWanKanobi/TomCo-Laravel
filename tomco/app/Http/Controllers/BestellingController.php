@@ -31,32 +31,19 @@ class BestellingController extends Controller {
 		//$this->middleware('auth');
 	}
 	
-	public function overzicht()
+	public function index()
 	{
 		$bestellingen = Bestelling::all();
 		
-		return view('admin.bestelling.bestelling-overzicht', ['bestellingen' => $bestellingen]);
+		return view('admin.bestelling.index', ['bestellingen' => $bestellingen]);
+		
 	}
 	
-	public function getInformatie()
+	public function getOrder($id)
 	{
-		$bestellingens = Bestelling::all();
+		$order = Bestelling::find($id);
 		
-		$bestellingen = $bestellingens->merge($bestellingens);
-		
-		
-		return view('admin.bestelling.bestelling', ['bestellingen' => $bestellingen]);
-	}
-	
-	public function getInformatieById($id)
-	{
-		$bestelling = Bestelling::find($id);
-		//$bestellingen = Bestelling::where('bestelling_id', $id)->get();
-		echo $bestellingen;
-
-		$status = Status::lists('type');
-		
-		return view('admin.bestelling.bestelling_overzicht', ['bestellingen' => $bestellingen, 'status' => $status]);
+		return view('admin.bestelling.details', ['order' => $order]);
 	}
 	
 	public function verwijderen($id)

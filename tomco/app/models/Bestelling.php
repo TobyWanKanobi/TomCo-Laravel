@@ -1,52 +1,23 @@
 <?php namespace TomCo\models;
 
 use Illuminate\Database\Eloquent\Model;
+//use TomCo\models\Klant;
 
 class Bestelling extends Model {
 
-	protected $table = 'bestelregel';
+	protected $table = 'bestelling';
 	public $timestamps = false;
 	protected $primaryKey = 'bestelling_id';
 	
-	public $fillable = ['product_id', 'aantal', 'subtotaal'];
+	//public $fillable = ['product_id', 'aantal', 'subtotaal'];
 	
-	public function getProduct()
+	public function klant()
 	{
-		return Product::where('product_id', $this->product_id)->first()->naam;
+		return $this->hasOne('TomCo\models\Klant', 'klant_id', 'klant_id');
 	}
 	
-	public function getStreet()
+	public function producten()
 	{
-		return BestellingTest::where('bestelling_id', $this->bestelling_id)->first()->afleveradres_straat;
-	}
-	
-	public function getNumber()
-	{
-		return BestellingTest::where('bestelling_id', $this->bestelling_id)->first()->afleveradres_nummer;
-	}
-	
-	public function getExtra()
-	{
-		return BestellingTest::where('bestelling_id', $this->bestelling_id)->first()->afleveradres_toevoeging;
-	}
-	
-	public function getZipCode()
-	{
-		return BestellingTest::where('bestelling_id', $this->bestelling_id)->first()->afleveradres_postcode;
-	}
-	
-	public function getResidence()
-	{
-		return BestellingTest::where('bestelling_id', $this->bestelling_id)->first()->afleveradres_woonplaats;
-	}
-	
-	public function getOrderDate()
-	{
-		return BestellingTest::where('bestelling_id', $this->bestelling_id)->first()->besteld_op;
-	}
-	
-	public function getStatusOrder()
-	{
-		return BestellingTest::where('bestelling_id', $this->bestelling_id)->first()->status_type;
+		return $this->belongsToMany('TomCo\models\Product', 'bestelregel')->withPivot('aantal', 'subtotaal');
 	}
 }
