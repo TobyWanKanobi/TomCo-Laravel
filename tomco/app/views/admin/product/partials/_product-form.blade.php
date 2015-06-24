@@ -6,6 +6,11 @@
 </div>
 
 <div class="form-group">
+	{!! Form::select('categorie_id', 
+		$categorie_opties, $product->categorie_id, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
 	{!! Form::label('omschrijving_kort', 'Korte beschrijving (max 200)') !!}
 	{!! Form::textarea('omschrijving_kort', $product->omschrijving_kort, ['class' => 'form-control']) !!}
 </div>
@@ -20,4 +25,8 @@
 	{!! Form::text('prijs', $product->prijs, ['class' => 'form-control']) !!}
 </div>
 
-{!! Form::submit($submit_tekst, ['class' => 'btn btn-default']) !!}
+<div class="form-group">
+	{!! Form::file('image', ['class' => 'form-control', 'id' => 'image']) !!}
+</div>
+
+{!! Form::submit($submit_tekst, ['class' => 'btn btn-primary']) !!}

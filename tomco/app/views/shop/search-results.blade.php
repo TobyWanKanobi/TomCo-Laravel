@@ -14,7 +14,7 @@
 	@foreach($products as $product)
 		<tr>
 			<td>
-				<img src="{{ URL::asset('assets/images/artikelen/' . $product->afbeelding_klein) }}" class="img-responsive img-thumbnail" alt="title" style="width:200px; height:200px;" />
+				<img src="{{ URL::asset('uploads/' . $product->afbeelding_klein) }}" class="img-responsive img-thumbnail" alt="title" style="width:200px; height:200px;" />
 			</td>
 			<td>{!! $product->naam !!}</td>
 			<td>{!! $product->prijs !!}</td>

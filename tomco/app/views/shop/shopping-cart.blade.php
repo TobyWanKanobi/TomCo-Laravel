@@ -1,5 +1,6 @@
 @extends('layouts.default')
 @section('content')
+<a href="{{ URL::previous() }}" class="btn btn-primary">Terug</a>
 <table class="table table-bordered">
 	<thead>
 		<tr>
@@ -15,7 +16,7 @@
 	<tbody>
 	@foreach($products as $product)
 		<tr>
-			<td style="width:15%;"><img src="{!! URL::asset('assets/images/artikelen/' . $product['image']) !!}" style="width: 70%; height: 70%;" alt="{!! $product['name'] !!}" /></td>
+			<td style="width:15%; text-align:center;"><img src="{!! URL::asset('uploads/' . $product['image']) !!}" style="width: 100px; height: 100px;" alt="{!! $product['name'] !!}" /></td>
 			<td>{!! $product['name'] !!}</td>
 			<td>{!! $product['price'] !!}</td>
 			<td>{!! $product['description'] !!}</td>

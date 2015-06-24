@@ -21,4 +21,10 @@ class Product extends Model {
 	{
 		return $this->belongsToMany('TomCo\models\Bestelling', 'bestelregel', 'product_id', 'bestelling_id');
 	}
+	
+	public function categorie()
+	{
+		return $this->hasOne('TomCo\models\Categorie', 'categorie_id', 'categorie_id');
+	}
+	
 }
