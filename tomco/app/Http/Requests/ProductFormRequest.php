@@ -26,9 +26,12 @@ class ProductFormRequest extends Request {
 			'naam' => 'required',
 			'prijs' => 'required',
 			'omschrijving_kort' => 'required',
+			'omschrijving_kort' => 'max:200',
 			'omschrijving_lang' => 'required',
+			'omschrijving_lang' => 'max:4294967295',
 			'afbeelding_groot' => '',
-			'afbeelding_groot' => ''
+			'afbeelding_groot' => '',
+			'image' => 'required'
 		];
 	}
 

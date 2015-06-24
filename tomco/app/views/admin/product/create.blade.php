@@ -13,7 +13,7 @@
 			@endforeach
 		</ul>
 		
-		{!! Form::model($product, ['route' => 'store_product', 'class' => 'form-horizontal']) !!}
+		{!! Form::model($product, ['route' => 'store_product', 'class' => 'form-horizontal', 'files' => true]) !!}
 		
 			@include('admin/product/partials/_product-form', ['product' => $product, 'categorie_op' => $categorie_opties, 'submit_tekst' => 'Product toevoegen'])
 		

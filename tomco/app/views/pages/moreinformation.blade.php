@@ -40,7 +40,7 @@ function generateCategories($categorien) {
 			</div>
 				
 						<div class="col-md-4 text-center">
-							<img src="{{ URL::asset('assets/images/artikelen/' . $product->afbeelding_groot) }}" alt="product_image" style="height: 200px; width: 200px;" />
+							<img src="{{ URL::asset('uploads/' . $product->afbeelding_groot) }}" alt="product_image" style="height: 200px; width: 200px;" />
 						</div>
 						
 						<div class="col-md-6">

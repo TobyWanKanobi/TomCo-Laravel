@@ -25,4 +25,8 @@
 	{!! Form::text('prijs', $product->prijs, ['class' => 'form-control']) !!}
 </div>
 
-{!! Form::submit($submit_tekst, ['class' => 'btn btn-default']) !!}
+<div class="form-group">
+	{!! Form::file('image', ['class' => 'form-control', 'id' => 'image']) !!}
+</div>
+
+{!! Form::submit($submit_tekst, ['class' => 'btn btn-primary']) !!}

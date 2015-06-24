@@ -8,8 +8,9 @@
 		<table class="table table-bordered table-striped">
 			<thead>
 				<tr>
+					<th></th>
 					<th>Titel</th>
-					<th>Omschrijving</th>
+					<th style="width:20%;">Omschrijving</th>
 					<th>Categorie</th>
 					<th>Prijs</th>
 					<th>Acties</th>
@@ -18,11 +19,13 @@
 			<tbody>
 			@foreach($products as $product)
 				<tr>
+					<td><img src="{{ URL::asset('uploads/' . $product->afbeelding_groot) }}" class="img-responsive img-thumbnail" alt="title" style="width:100px; height:100px;" /></td>
 					<td>{{ $product->naam }}</td>
 					<td>{{ $product->omschrijving_kort }}</td>
 					<td>{{ $product->categorie->naam }}</td>
 					<td>&euro; {{ $product->prijs }}</td> 
 					<td>
+						<a href="{{ URL::route('edit_product', ['id' => $product->product_id]) }}"class="btn btn-success"
 						<button class="btn btn-success" data-productid="{{ $product->product_id }}"><i class="glyphicon glyphicon-pencil"></i> Wijzigen</button> 
 						
 						<a class="btn btn-danger" data-toggle="modal" data-target="#product-{{ $product->product_id }}" href="#">
