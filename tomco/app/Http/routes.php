@@ -11,21 +11,21 @@
 |
 */
 
-Route::get('home', function() {
+Route::get('home', ['as' => 'home', 'uses' => function() {
     return View::make('home.home');
-});
+}]);
 
 Route::get('/', function() {
     return View::make('home.home');
 });
 
-Route::get('over-ons', function() {
+Route::get('over-ons', ['as' => 'overons', 'uses' => function() {
     return View::make('home.over-ons');
-});
+}]);
 
-Route::get('contact', function() {
+Route::get('contact', ['as' => 'contact', 'uses' => function() {
     return View::make('home.contact');
-});
+}]);
 
 //rourw::get('/', ['as' => 'home', 'uses' => ]);
 Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);

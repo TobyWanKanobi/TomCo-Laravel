@@ -25,7 +25,10 @@ function generateCategories($categorien) {
 	return $html;
 }
 
+$more_information = $producten->product_id;
+
 ?>
+
 <div id="product">
 	<div class="container-fluid">
 		
@@ -56,18 +59,23 @@ function generateCategories($categorien) {
 						<div class="col-md-6">
 							
 							<h2 class="h2">{{ $producten->naam }}</h4>
+							<h4>Omschrijving Kort</h4>
 							<p>
+								<br/>
 								{{ $producten->omschrijving_kort }}
 							</p>
+							<br/><h4>Omschrijving Lang</h4>
 							<p>
+								<br/>
 								{{ $producten->omschrijving_lang }}
 							</p>
 							
 							<div id="price-box" class="col-md-12 text-right">
-								<span><strong>{{ $producten->prijs }}</strong></span>
+								<span><strong>&euro; {{ $producten->prijs }}</strong></span>
 							</div>
-							
-							<a href="{{ URL::route('add_to_cart', ['id' => $producten->product_id, 'quantity' => 1]) }}" class="btn btn-success pull-right">Voeg toe aan winkelwagen</a>
+							<br/>
+							<br/>
+							<a href="{{ URL::route('add_to_cart', ['id' => $producten->product_id, 'quantity' => 1]) }}" class="btn btn-success pull-right"><li class="glyphicon glyphicon-shopping-cart"></li> Voeg toe aan winkelwagen</a>
 						</div>
 						@if(count($producten) == $counter)
 							{{-- */$done=true;/* --}}
@@ -81,27 +89,4 @@ function generateCategories($categorien) {
 		
 	</div><!--./container-->
 </div><!--./product-->
-
-<div id="related-products">
-	<div class="container-fluid">
-		<h2 class="h2 text-center">Gerelateerde artikelen</h2>
-		
-		<div class="row">
-		
-		<?php
-		//for($i =0; $i < 3; $i++) {
-		?>
-			<!--<div class="col-md-4 text-center">
-				<h3 class="h3">[product_naam]</h3>
-					<img src="#" alt=v"product_image" style="height: 100px; width: 100px;" />
-				<a href="" class="btn btn-primary">Bekijk</a>
-			</div>-->
-		<?php
-		//}
-		?>
-			
-		</div><!--./row-->
-	</div><!--./container-->
-	
-</div><!--./related-products-->
 @stop
