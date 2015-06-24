@@ -107,26 +107,26 @@
 						</li>
 					@else
 						<li>
-							<a href="javascript:;" data-toggle="collapse" data-target="#producten"><i class="fa fa-fw fa-archive"></i> Producten <i class="fa fa-fw fa-caret-down"></i></a>
+							<a href="javascript:;" data-toggle="collapse" data-target="#producten"><i class="fa fa-dropbox"></i> Producten <i class="fa fa-fw fa-caret-down"></i></a>
 							<ul id="producten" class="collapse">
 								<li class="active">
-									<a href="{{ URL::route('products') }}"><i class="fa fa-fw fa-sitemap"></i>Overzicht</a>
+									<a href="{{ URL::route('products') }}"><i class="fa fa-fw fa-list"></i> Overzicht</a>
 								</li>
 								<li>
-									<a href="{{ URL::route('create_product') }}"><i class="fa fa-fw fa-plus"></i>Nieuw product</a>
+									<a href="{{ URL::route('create_product') }}"><i class="fa fa-fw fa-plus"></i> Nieuw product</a>
 								</li>
 							</ul>
 						</li>
 					@endif
 						<li class="active">
-							<a href="{{ URL::route('bestellingen') }}"><i class="fa fa-fw fa-sitemap"></i> Bestellingen<span class="sr-only">(current)</span></a>
+							<a href="{{ URL::route('bestellingen') }}"><i class="fa fa-file-text"></i> Bestellingen<span class="sr-only">(current)</span></a>
 						</li>
 					@if(Request::path() === 'admin/categorie/beheer' || Request::path() === 'admin/categorie/nieuw')
 						<li class="active">
-							<a href="javascript:;" data-toggle="collapse" data-target="#categorieen"><i class="fa fa-fw fa-archive"></i> Categorie&euml;n <span class="sr-only">(current)</span><i class="fa fa-fw fa-caret-down"></i></a>
+							<a href="javascript:;" data-toggle="collapse" data-target="#categorieen"><i class="fa fa-fw fa-sitemap"></i> Categorie&euml;n <span class="sr-only">(current)</span><i class="fa fa-fw fa-caret-down"></i></a>
 							<ul id="categorieen" class="collapse">
 								<li>
-									<a href="{{ URL::route('categorie_beheer') }}"><i class="fa fa-fw fa-sitemap"></i>Overzicht</a>
+									<a href="{{ URL::route('categorie_beheer') }}"><i class="fa fa-fw fa-list"></i>Overzicht</a>
 								</li>
 								<li>
 									<a href="{{ URL::route('create_categorie') }}"><i class="fa fa-fw fa-plus"></i>Nieuwe Categorie</a>
@@ -135,13 +135,13 @@
 						</li>
 					@else
 						<li>
-							<a href="javascript:;" data-toggle="collapse" data-target="#categorieen"><i class="fa fa-fw fa-archive"></i> Categorie&euml;n <i class="fa fa-fw fa-caret-down"></i></a>
+							<a href="javascript:;" data-toggle="collapse" data-target="#categorieen"><i class="fa fa-fw fa-sitemap"></i> Categorie&euml;n <i class="fa fa-fw fa-caret-down"></i></a>
 							<ul id="categorieen" class="collapse">
 								<li>
-									<a href="{{ URL::route('categorie_beheer') }}"><i class="fa fa-fw fa-sitemap"></i>Overzicht</a>
+									<a href="{{ URL::route('categorie_beheer') }}"><i class="fa fa-fw fa-list"></i> Overzicht</a>
 								</li>
 								<li>
-									<a href="{{ URL::route('create_categorie') }}"><i class="fa fa-fw fa-plus"></i>Nieuwe Categorie</a>
+									<a href="{{ URL::route('create_categorie') }}"><i class="fa fa-fw fa-plus"></i> Nieuwe Categorie</a>
 								</li>
 							</ul>
 						</li>

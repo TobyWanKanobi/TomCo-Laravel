@@ -18,6 +18,6 @@ class Bestelling extends Model {
 	
 	public function producten()
 	{
-		return $this->belongsToMany('TomCo\models\Product', 'bestelregel')->withPivot('aantal', 'subtotaal');
+		return $this->belongsToMany('TomCo\models\Product', 'bestelregel', 'bestelling_id', 'product_id')->withPivot('aantal', 'subtotaal');
 	}
 }

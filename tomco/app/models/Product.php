@@ -17,8 +17,8 @@ class Product extends Model {
 		'afbeelding_klein',
 		'afbeelding_groot'];
 
-	public function bestelling()
+	public function bestellingen()
 	{
-		return $this->belongsToMany('Bestelling');
+		return $this->belongsToMany('TomCo\models\Bestelling', 'bestelregel', 'product_id', 'bestelling_id');
 	}
 }
