@@ -10,7 +10,7 @@ Breadcrumbs::register('home', function($breadcrumbs)
 Breadcrumbs::register('about', function($breadcrumbs)
 {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('Over Ons', route('over-ons'));
+    $breadcrumbs->push('Over Ons', route('overons'));
 });
 
 // Home > Contact
@@ -35,10 +35,9 @@ Breadcrumbs::register('category', function($breadcrumbs, $category)
 });
 
 // Home > Producten > [Category] > [Page]
-Breadcrumbs::register('more_information', function($breadcrumbs, $page)
-{
-    $breadcrumbs->parent('category', $page->category);
-    $breadcrumbs->push($page->title, route('more_information', $page->id));
+Breadcrumbs::register('more_information', function($breadcrumbs, $product) {
+    $breadcrumbs->parent('producten');
+    $breadcrumbs->push($product->naam, route('more_information', $product->product_id));
 });
 
 ?>

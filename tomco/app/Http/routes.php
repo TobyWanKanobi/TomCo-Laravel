@@ -11,21 +11,21 @@
 |
 */
 
-Route::get('home', function() {
+Route::get('home', ['as' => 'home', 'uses' => function() {
     return View::make('home.home');
-});
+}]);
 
 Route::get('/', function() {
     return View::make('home.home');
 });
 
-Route::get('over-ons', function() {
+Route::get('over-ons', ['as' => 'overons', 'uses' => function() {
     return View::make('home.over-ons');
-});
+}]);
 
-Route::get('contact', function() {
+Route::get('contact', ['as' => 'contact', 'uses' => function() {
     return View::make('home.contact');
-});
+}]);
 
 //rourw::get('/', ['as' => 'home', 'uses' => ]);
 Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
@@ -76,7 +76,7 @@ Route::delete('admin/categorie/verwijder/{id}', ['as' => 'delete_categorie', 'us
 
 Route::get('admin/bestellingen', ['as' => 'bestellingen', 'uses' => 'BestellingController@index']);
 Route::get('admin/bestellingen/{id}', ['as' => 'bestelling', 'uses' => 'BestellingController@getOrder']);;
-Route::delete('admin/bestelling/overzicht/verwijder/{id}', ['as' => 'delete_bestelling', 'uses' => 'BestellingController@verwijderen']);
+Route::delete('admin/bestelling/verwijder/{id}', ['as' => 'delete_bestelling', 'uses' => 'BestellingController@verwijderen']);
 
 Route::get('admin/bestelling/wijzig/{id}', ['as' => 'edit_bestelling', 'uses' => 'BestellingController@getEdit']);
 Route::post('admin/bestelling/wijzig', ['as' => 'save_bestelling', 'uses' => 'BestellingController@wijzigen']);

@@ -27,7 +27,7 @@ function generateCategories($categorien) {
 }
 
 ?>
-
+{!! Breadcrumbs::render('producten') !!}
 <div class="col-lg-3">
 	<div id="categories">
 	<?php

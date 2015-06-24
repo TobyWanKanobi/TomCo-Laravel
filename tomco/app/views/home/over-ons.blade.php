@@ -1,5 +1,6 @@
 @extends('layouts.default')
 @section('content')
+{!! Breadcrumbs::render('about') !!}
 <!-- About Us Text -->
 		<div class="container">
 			<div class="row">

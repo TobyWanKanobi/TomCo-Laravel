@@ -13,7 +13,7 @@
 			<table class="table table-bordered">
 			<tbody>
 				<tr>
-					<th>Naam</th><td>{{ $order->klant->voornaam}} {{ $order->klant->achternaam }}</td>
+					<th>Naam</th><td>{{ $order->klant->voornaam}} {{ $order->klant->tussenvoegsel}} {{ $order->klant->achternaam }}</td>
 				</tr>
 				<tr>
 					<th>Besteldatum</th><td>{{ $order->besteld_op }}</td>
