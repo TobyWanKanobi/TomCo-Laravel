@@ -1,11 +1,16 @@
 <?php namespace TomCo\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use TomCo\models\Product;
-use TomCo\models\Categorie;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use TomCo\models\Customer;
+use TomCo\models\Product;
+use TomCo\models\Bestelling;
+use TomCo\models\Categorie;
 
 class ShopController extends Controller {
 
@@ -117,6 +122,39 @@ class ShopController extends Controller {
 		}
 		
 		return redirect()->route('shopping_cart');
+	}
+	
+	public function checkout()
+	{
+		$cart = Session::get('shopping_cart');
+		$besteldeProds = [];
+		// Haal waardes die in de koppeltabel moeten komen uit de sessie (winkelmandje)
+		foreach($cart as $key => $value)
+		{
+			$besteldeProds[$key] = ['aantal' => $value['quantity'], 'subtotaal' => $value['quantity'] * $value['price']];
+		}
+		
+		$klant = Customer::where('account_id', Auth::user()->getAuthIdentifier())->first();
+		$bestelling = new Bestelling;
+		$bestelling->klant_id = $klant->klant_id;
+		$bestelling->afleveradres_straat = $klant->adres_straat;
+		$bestelling->afleveradres_nummer = $klant->adres_nummer;
+		$bestelling->afleveradres_toevoeging = $klant->adres_toevoeging;
+		$bestelling->afleveradres_postcode = $klant->postcode;
+		$bestelling->afleveradres_woonplaats = $klant->woonplaats;
+		$bestelling->besteld_op = Carbon::now();
+		
+		// Maakt transactie, wanneer er iets mis gaat zal bestelling zowel als bestelregel niet toegevoegd worden
+		DB::transaction(function() use ($bestelling, $besteldeProds)
+		{
+			// Voeg bestelling toe
+			$bestelling->save();
+			
+			// Voeg bestelregels toe
+			$bestelling->producten()->sync($besteldeProds);
+		});
+		
+		return view('shop.checkout', ['bestelling' => $bestelling]);
 	}
 	
 }

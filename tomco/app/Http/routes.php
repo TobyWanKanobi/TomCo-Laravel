@@ -39,6 +39,7 @@ Route::get('zoeken', ['as' => 'search', 'uses' => 'ShopController@search']);
 Route::get('meerinformatie', ['as' => 'more_information', 'uses' => 'CategorieController@start']);
 
 //Shoppingcart
+Route::get('kassa', ['as' => 'checkout', 'uses' => 'ShopController@checkout', 'middleware' => 'auth']);
 Route::get('winkelwagen', ['as' => 'shopping_cart', 'uses' => 'ShopController@shoppingCart']);
 //Route::get('winkelwagen/add/{id}/{quantity}', ['as' => 'add_to_cart', 'uses' => 'ShopController@addToCart']);
 Route::any('winkelwagen/add', ['as' => 'add_to_cart', 'uses' => 'ShopController@addToCart']);

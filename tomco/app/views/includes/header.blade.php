@@ -12,7 +12,6 @@
 				<a href="{{ URL::to('login') }}" class="btn btn-success"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Inloggen</a>
 				<a href="{{ URL::to('register') }}" class="btn btn-success"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Registreren</a>
 			@else
-				<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Winkelwagen</a>
 				<a href="{{ URL::to('logout') }}" class="btn btn-success"><span class="glyphicon glyphicon-eject" aria-hidden="true"></span> Logout</a>
 			@endif
 		
