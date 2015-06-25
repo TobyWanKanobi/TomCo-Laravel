@@ -48,7 +48,6 @@
 					<td>&euro; {{ $totaalBedrag }}</td>
 					<td>
 						<a href="{{ URL::route('bestelling', ['id' => $bestelling->bestelling_id]) }}" class="btn btn-primary">Details</a>
-						<button class="btn btn-success" data-productid="{{ $product->product_id }}"><i class="glyphicon glyphicon-pencil"></i> Wijzigen</button> 
 								
 						<a class="btn btn-danger" data-toggle="modal" data-target="#bestelling-{{ $bestelling->bestelling_id }}" href="#">
 							<i class="glyphicon glyphicon-trash"></i> Verwijderen
