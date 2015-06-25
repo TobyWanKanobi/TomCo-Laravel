@@ -77,9 +77,9 @@
 					@if(Auth::user()->rol == 'gebruiker')
 
 						@if(Request::path() === 'klant/$userId' || Request::path() === 'klant')
-							<li class="active"><a href="{{ URL::route('gebruiker', ['id' => $userId]) }}">Klant pagina <span class="sr-only">(current)</span></a></li>
+							<li class="active"><a href="{{ URL::route('gebruiker', ['id' => $userId]) }}">Mijn bestellingen <span class="sr-only">(current)</span></a></li>
 						@else
-							<li><a href="{{ URL::route('gebruiker', ['id' => $userId]) }}">Klant pagina</a></li>
+							<li><a href="{{ URL::route('gebruiker', ['id' => $userId]) }}">Mijn bestellingen</a></li>
 						@endif
 						
 					@else

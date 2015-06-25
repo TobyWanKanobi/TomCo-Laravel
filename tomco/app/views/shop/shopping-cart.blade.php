@@ -33,7 +33,7 @@
 				@if (count($products) == 0)
 					Winkelwagen bevat geen producten
 				@else
-					<a href="{{ URL::route('checkout') }}" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-shopping-cart"></span> Betalen</a>
+					<a href="{{ URL::route('order_summary') }}" class="btn btn-primary pull-right"><i class="fa fa-credit-card"></i> Naar betalen</a>
 				@endif
 			</td>
 		</tr>

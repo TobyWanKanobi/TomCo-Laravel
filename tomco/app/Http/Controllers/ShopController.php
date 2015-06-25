@@ -68,6 +68,18 @@ class ShopController extends Controller {
 		return view('shop.shopping-cart', ['products' => $products]);
 	}
 	
+	public function orderSummary()
+	{
+		$products = Session::get('shopping_cart');
+		if($products == null) {
+			$products = [];
+		}
+		
+		$customer = Customer::where('account_id', Auth::user()->getAuthIdentifier())->first();
+		$date = Carbon::now();
+		return view('shop.order-summary', ['products' => $products, 'customer' => $customer, 'date' => $date]);
+	}
+	
 	public function addToCart(Request $request)
 	{
 		$this->validate($request, ['id' => 'required|integer', 'quantity' => 'required|integer']);
@@ -129,10 +141,13 @@ class ShopController extends Controller {
 		$cart = Session::get('shopping_cart');
 		$besteldeProds = [];
 		// Haal waardes die in de koppeltabel moeten komen uit de sessie (winkelmandje)
-		foreach($cart as $key => $value)
+		if($cart != null)
 		{
-			$besteldeProds[$key] = ['aantal' => $value['quantity'], 'subtotaal' => $value['quantity'] * $value['price']];
-		}
+			foreach($cart as $key => $value)
+			{
+				$besteldeProds[$key] = ['aantal' => $value['quantity'], 'subtotaal' => $value['quantity'] * $value['price']];
+			}
+		
 		
 		$klant = Customer::where('account_id', Auth::user()->getAuthIdentifier())->first();
 		$bestelling = new Bestelling;
@@ -152,7 +167,12 @@ class ShopController extends Controller {
 			
 			// Voeg bestelregels toe
 			$bestelling->producten()->sync($besteldeProds);
+			Session::forget('shopping_cart');
 		});
+		}
+		else {
+			return redirect()->route('home');
+		}
 		
 		return view('shop.checkout', ['bestelling' => $bestelling]);
 	}

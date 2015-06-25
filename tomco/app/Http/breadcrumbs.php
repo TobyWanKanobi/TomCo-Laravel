@@ -40,5 +40,10 @@ Breadcrumbs::register('more_information', function($breadcrumbs, $product) {
     $breadcrumbs->push($product->naam, route('more_information', $product->product_id));
 });
 
+// Home > klant > [klant_naam]
+Breadcrumbs::register('customer', function($breadcrumbs, $klant) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push($klant, route('gebruiker', $klant));
+});
 
 ?>

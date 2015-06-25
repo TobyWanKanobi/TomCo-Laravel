@@ -10,10 +10,11 @@ class GebruikerController extends Controller {
 	
 	public function index($id)
 	{
-		$customer = Customer::where('account_id', '=', $id)->select('klant_id')->get();
+		$customer = Customer::where('account_id', '=', $id)->select('klant_id', 'voornaam')->get();
 		$klant = $customer[0]['klant_id'];
+		$klantnaam = $customer[0]['voornaam'];
 		$bestellingen = Bestelling::where('klant_id', '=', $klant)->get();
-		return view('pages.userpage', ['bestellingen' => $bestellingen, 'klant' => $klant]);
+		return view('pages.userpage', ['bestellingen' => $bestellingen, 'klantnaam' => $klantnaam]);
 	}
 	
 	public function getOrderCustomer($klant_id, $bestelling_id)
