@@ -40,4 +40,5 @@ Breadcrumbs::register('more_information', function($breadcrumbs, $product) {
     $breadcrumbs->push($product->naam, route('more_information', $product->product_id));
 });
 
+
 ?>

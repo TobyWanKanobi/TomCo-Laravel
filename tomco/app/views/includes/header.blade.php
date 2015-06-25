@@ -1,7 +1,10 @@
 <div id="header">
 	
 	<div class="row">
-	
+	<?php 
+		$userId = Auth::id();
+	?>
+
 		<div class="col-md-5" id="logo">
 			<img src="{{ URL::asset('assets/images/logo.png') }}" alt="logo" style="width:auto;height:200px">
 		</div>
@@ -68,6 +71,24 @@
 					@else
 						
 					@endif
+					
+					@if(Auth::check()) 
+	
+					@if(Auth::user()->rol == 'gebruiker')
+
+						@if(Request::path() === 'klant/$userId' || Request::path() === 'klant')
+							<li class="active"><a href="{{ URL::route('gebruiker', ['id' => $userId]) }}">Klant pagina <span class="sr-only">(current)</span></a></li>
+						@else
+							<li><a href="{{ URL::route('gebruiker', ['id' => $userId]) }}">Klant pagina</a></li>
+						@endif
+						
+					@else
+						
+					@endif
+					@else
+						
+					@endif
+
 				</ul>
 				
 				<div class="col-sm-3 col-md-3 pull-right">

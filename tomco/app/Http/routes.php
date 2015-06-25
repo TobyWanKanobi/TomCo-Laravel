@@ -51,6 +51,10 @@ Route::any('categorie/{naam}', [
   'uses' => 'CategorieController@index'
 ]);
 
+Route::get('klant/{id}', ['as' => 'gebruiker', 'uses' => 'GebruikerController@index']);
+Route::get('klant/{id}/{bestelling_id}', ['as' => 'gebruiker_bestelling', 'uses' => 'GebruikerController@getOrderCustomer']);
+
+
 /*
 |--------------------------------------------------------------------------
 | Admin backend routes
